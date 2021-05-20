@@ -1,0 +1,64 @@
+button.ok=OK
+button.cancel=Cancel
+button.close=Close
+
+language.en_GB=English
+language.de_DE=German
+
+mainWindow.menu.file=File
+mainWindow.menu.file.new=New
+mainWindow.menu.file.open=Open
+mainWindow.menu.file.recentFiles=Recent Files
+mainWindow.menu.file.recentFiles.empty=No recent files
+mainWindow.menu.file.openDirectory=Open Directory
+mainWindow.menu.file.save=Save
+mainWindow.menu.file.preferences=Preferences
+mainWindow.menu.file.exit=Exit
+mainWindow.menu.tag=Tag
+mainWindow.menu.tag.newTag=New Tag
+mainWindow.menu.tag.editTag=Edit Tag
+mainWindow.menu.tag.newCompound=New Compound
+mainWindow.menu.tag.newList=New List
+mainWindow.menu.tag.rename=Rename
+mainWindow.menu.tag.remove=Remove
+mainWindow.menu.about.showWelcomeMessage=Show welcome message
+mainWindow.menu.about.about=About
+mainWindow.menu.about.aboutQt=About Qt
+mainWindow.messageBox.askSave.title=Data modified
+mainWindow.messageBox.askSave.text=The data has been modified.<br>Do you want to save your changes?
+
+treeWidget.header.name=Name
+treeWidget.header.value=Value
+treeWidget.header.type=Type
+treeWidget.messageBox.cantRead.title=Can't read file
+treeWidget.messageBox.cantRead.text=Can't read file %s. Maybe it's not a NBT File.
+treeWidget.messageBox.newCompound.title=New Compound
+treeWidget.messageBox.newCompound.text=Enter a name for the compound
+treeWidget.messageBox.rename.title=Rename
+treeWidget.messageBox.rename.text=Enter a new name
+
+editWindow.title.new=New Tag
+editWindow.title.edit=Edit Tag
+editWindow.label.name=Name:
+editWindow.label.value=Value:
+editWindow.label.type=Type:
+editWindow.messageBox.noName.title=Error
+editWindow.messageBox.noName.text=Name can't be empty.
+editWindow.messageBox.wrongValue.title=Error
+editWindow.messageBox.wrongValue.text=This value is not allowed for this type.
+
+settingsWindow.title=Preferences
+settingsWindow.label.language=Language
+settingsWindow.comboBox.systemLanguage=Use system default
+settingsWindow.label.maxRecentFiles=Length of recent files list
+settingsWindow.checkBox.showWelcomeMessage=Show welome message on startup
+
+aboutWindow.title=About
+aboutWindow.label.title=jdNBTExplorer Version %s
+aboutWindow.label.description=jdNBTExplorer is a editor for NBt files
+aboutWindow.label.license=This program is licensed under GNU GPL 3
+aboutWindow.button.viewSource=View Source
+
+welcomeMessage.title=Warning
+welcomeMessage.text=jdNBTExplorer is a programme that allows you to edit Minecraft's NBT files. Using it without proper knowledge can destroy your world. Therefore, please always make a backup of your world before using it.
+welcomeMessage.checkBox=Show this message on startup

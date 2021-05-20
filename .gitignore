@@ -1,0 +1,6 @@
+__pycache__/
+
+#Some test files
+*.dat
+*.mca
+*.dat_old

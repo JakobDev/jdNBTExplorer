@@ -1,0 +1,3 @@
+jdTranslationHelper
+PyQt6
+nbt

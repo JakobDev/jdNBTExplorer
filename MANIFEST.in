@@ -1,0 +1,3 @@
+include jdNBTExplorer/translation/*
+include README.md
+include LICENSE
