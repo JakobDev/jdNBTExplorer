@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QComboBox, QSpinBox, QCheckBox, QPushButton, QLabel, QFormLayout, QVBoxLayout, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QComboBox, QSpinBox, QCheckBox, QPushButton, QLabel, QLayout, QFormLayout, QVBoxLayout, QHBoxLayout
 import os
 
 class SettingsWindow(QWidget):
@@ -33,6 +33,7 @@ class SettingsWindow(QWidget):
         mainLayout = QVBoxLayout()
         mainLayout.addLayout(settingsLayout)
         mainLayout.addLayout(buttonLayout)
+        mainLayout.setSizeConstraint(QLayout.SizeConstraint.SetFixedSize)
 
         self.setLayout(mainLayout)
         self.setWindowTitle(env.translate("settingsWindow.title"))

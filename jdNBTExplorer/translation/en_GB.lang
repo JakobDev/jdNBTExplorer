@@ -10,6 +10,7 @@ mainWindow.menu.file.new=New
 mainWindow.menu.file.open=Open
 mainWindow.menu.file.recentFiles=Recent Files
 mainWindow.menu.file.recentFiles.empty=No recent files
+mainWindow.menu.file.recentFiles.clear=Clear
 mainWindow.menu.file.openDirectory=Open Directory
 mainWindow.menu.file.save=Save
 mainWindow.menu.file.preferences=Preferences
@@ -51,7 +52,7 @@ settingsWindow.title=Preferences
 settingsWindow.label.language=Language
 settingsWindow.comboBox.systemLanguage=Use system default
 settingsWindow.label.maxRecentFiles=Length of recent files list
-settingsWindow.checkBox.showWelcomeMessage=Show welome message on startup
+settingsWindow.checkBox.showWelcomeMessage=Show welcome message on startup
 
 aboutWindow.title=About
 aboutWindow.label.title=jdNBTExplorer Version %s
@@ -62,3 +63,6 @@ aboutWindow.button.viewSource=View Source
 welcomeMessage.title=Warning
 welcomeMessage.text=jdNBTExplorer is a programme that allows you to edit Minecraft's NBT files. Using it without proper knowledge can destroy your world. Therefore, please always make a backup of your world before using it.
 welcomeMessage.checkBox=Show this message on startup
+
+fileNotFound.title=File not found
+fileNotFound.text=The given file was not found

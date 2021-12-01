@@ -2,14 +2,16 @@ from jdTranslationHelper import jdTranslationHelper
 from .Functions import getDataPath, readJsonFile
 from .Settings import Settings
 from PyQt6.QtCore import QLocale
+from PyQt6.QtGui import QIcon
 import os
 
 class Enviroment():
     def __init__(self):
-        self.version = "1.0"
+        self.version = "1.1"
         self.modified = False
         self.dataDir = getDataPath()
         self.programDir = os.path.dirname(os.path.realpath(__file__))
+        self.programIcon = QIcon(os.path.join(self.programDir, "Logo.png"))
 
         default_settings = {
             "language": "default",

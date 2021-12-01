@@ -10,6 +10,7 @@ mainWindow.menu.file.new=Neu
 mainWindow.menu.file.open=Öffnen
 mainWindow.menu.file.recentFiles=Zuletzt geöffnete Dateien
 mainWindow.menu.file.recentFiles.empty=Keine zuletzt geöffneten Dateien
+mainWindow.menu.file.recentFiles.clear=Löschen
 mainWindow.menu.file.openDirectory=Verzeichnis öffnen
 mainWindow.menu.file.save=Speichern
 mainWindow.menu.file.preferences=Einstellungen
@@ -31,7 +32,7 @@ treeWidget.header.name=Name
 treeWidget.header.value=Wert
 treeWidget.header.type=Typ
 treeWidget.messageBox.cantRead.title=Kann Datei nicht lesen
-treeWidget.messageBox.cantRead.text=Die Datei %s konnte nicht gelesen werden. Vieleicht ist es keine NBT Datei.
+treeWidget.messageBox.cantRead.text=Die Datei %s konnte nicht gelesen werden. Vielleicht ist es keine NBT Datei.
 treeWidget.messageBox.newCompound.title=Compound bearbeiten
 treeWidget.messageBox.newCompound.text=Gib einen Namen für den Compound ein
 treeWidget.messageBox.rename.title=Umbenennen
@@ -55,10 +56,13 @@ settingsWindow.checkBox.showWelcomeMessage=Zeige Willkommensnachricht beim Start
 
 aboutWindow.title=Über
 aboutWindow.label.title=jdNBTExplorer Version %s
-aboutWindow.label.description=jdNBTExplorer ist ein Editor für NBT Datein
+aboutWindow.label.description=jdNBTExplorer ist ein Editor für NBT Dateien
 aboutWindow.label.license=Dieses Programm wurde unter der GNU GPL 3 lizenziert
 aboutWindow.button.viewSource=Quelltext anzeigen
 
 welcomeMessage.title=Warnung
 welcomeMessage.text=jdNBTExplorer ist ein Programm, mit dem du die NBT Dateien von Minecraft bearbeiten kannst. Die unbedarfte Benutzung kann deine Welt zerstören. Bitte mache daher vor der Benutzung immer ein Backup deiner Welt.
 welcomeMessage.checkBox=Beim Starten anzeigen
+
+fileNotFound.title=Datei nicht gefunden
+fileNotFound.text=Die angegebene Datei wurde nicht gefunden

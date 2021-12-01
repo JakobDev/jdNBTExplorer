@@ -5,7 +5,7 @@ with open("README.md","r",encoding="utf-8") as f:
     description = f.read()
 
 setup(name="jdNBTExplorer",
-    version="1.0",
+    version="1.1",
     description="A Editor for Minecraft NBT files",
     long_description=description,
     long_description_content_type="text/markdown",
@@ -43,6 +43,7 @@ setup(name="jdNBTExplorer",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: Implementation :: CPython",
     ],

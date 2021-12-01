@@ -51,8 +51,8 @@ class EditWindow(QWidget):
 
         buttonLayout = QHBoxLayout()
         buttonLayout.addStretch(1)
-        buttonLayout.addWidget(cancelButton)
         buttonLayout.addWidget(okButton)
+        buttonLayout.addWidget(cancelButton)
 
         mainLayout = QVBoxLayout()
         mainLayout.addLayout(gridLayout)

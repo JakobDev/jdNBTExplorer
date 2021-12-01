@@ -1,3 +1,4 @@
 include jdNBTExplorer/translation/*
+include jdNBTExplorer/Logo.png
 include README.md
 include LICENSE

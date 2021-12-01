@@ -48,6 +48,8 @@ class MainWindow(QMainWindow):
         preferencesAction.triggered.connect(self.env.settingsWindow.openWindow)
         fileMenu.addAction(preferencesAction)
 
+        fileMenu.addSeparator()
+
         exitAction = QAction(self.env.translate("mainWindow.menu.file.exit"),self)
         exitAction.triggered.connect(self.close)
         fileMenu.addAction(exitAction)
@@ -148,13 +150,31 @@ class MainWindow(QMainWindow):
     def updateRecentFilesMenu(self):
         self.recentFilesMenu.clear()
         if len(self.env.recentFiles) == 0:
-            emptyAction = QAction(self.env.translate("mainWindow.menu.file.recentFiles.empty"),self)
+            emptyAction = QAction(self.env.translate("mainWindow.menu.file.recentFiles.empty"), self)
             emptyAction.setEnabled(False)
             self.recentFilesMenu.addAction(emptyAction)
             return
         for i in self.env.recentFiles:
             action = QAction(i,self)
+            action.triggered.connect(self.openRecentFile)
             self.recentFilesMenu.addAction(action)
+        self.recentFilesMenu.addSeparator()
+        clearAction = QAction(self.env.translate("mainWindow.menu.file.recentFiles.clear"), self)
+        clearAction.triggered.connect(self.clearRecentFiles)
+        self.recentFilesMenu.addAction(clearAction)
+
+    def openRecentFile(self):
+        if not self.checkSave():
+            return
+        action = self.sender()
+        if action:
+            self.openFile(action.text())
+
+    def clearRecentFiles(self):
+        self.env.recentFiles.clear()
+        self.updateRecentFilesMenu()
+        with open(os.path.join(self.env.dataDir, "recentfiles.json"),"w", encoding="utf-8") as f:
+            json.dump(self.env.recentFiles,f,ensure_ascii=False,indent=4)
 
     def openDirectoryClicked(self):
         if not self.checkSave():
