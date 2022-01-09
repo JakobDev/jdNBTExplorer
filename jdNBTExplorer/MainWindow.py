@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QMainWindow, QMenu, QFileDialog, QApplication, QCheckBox, QMessageBox
+from .Functions import showMessageBox
 from PyQt6.QtGui import QAction
 import json
 import os
@@ -119,7 +120,10 @@ class MainWindow(QMainWindow):
             self.env.treeWidget.newFile(path[0])
 
     def openFile(self,path: str):
-        if path.endswith(".dat"):
+        if not os.path.isfile(path):
+            showMessageBox(self.env.translate("fileNotFound.title"), self.env.translate("fileNotFound.text"))
+            return
+        if path.endswith(".dat") or path.endswith(".dat_old"):
             self.env.treeWidget.clearItems()
             self.env.treeWidget.openNBTFile(path)
             self.addPathToRecentFiles(path)
@@ -127,6 +131,8 @@ class MainWindow(QMainWindow):
             self.env.treeWidget.clearItems()
             self.env.treeWidget.openRegionFile(path)
             self.addPathToRecentFiles(path)
+        else:
+            showMessageBox(self.env.translate("noNBTFile.title"), self.env.translate("noNBTFile.text"))
 
     def openClicked(self):
         if not self.checkSave():
@@ -193,14 +199,16 @@ class MainWindow(QMainWindow):
                 self.env.treeWidget.openFile(filepath)
 
     def checkSave(self):
+        if not self.env.settings.get("checkSave"):
+            return True
         if self.env.modified:
-            answer = QMessageBox.warning(self,self.env.translate("mainWindow.messageBox.askSave.title"),self.env.translate("mainWindow.messageBox.askSave.text"),QMessageBox.StandardButtons.Save | QMessageBox.StandardButtons.Discard | QMessageBox.StandardButtons.Cancel)
-            if answer == QMessageBox.StandardButtons.Save:
+            answer = QMessageBox.warning(self,self.env.translate("mainWindow.messageBox.askSave.title"),self.env.translate("mainWindow.messageBox.askSave.text"),QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel)
+            if answer == QMessageBox.StandardButton.Save:
                 self.env.treeWidget.saveData()
                 return True
-            elif answer == QMessageBox.StandardButtons.Discard:
+            elif answer == QMessageBox.StandardButton.Discard:
                 return True
-            elif answer == QMessageBox.StandardButtons.Cancel:
+            elif answer == QMessageBox.StandardButton.Cancel:
                 return False
         else:
             return True

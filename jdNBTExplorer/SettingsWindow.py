@@ -8,6 +8,7 @@ class SettingsWindow(QWidget):
 
         self.languageComboBox = QComboBox()
         self.recentFilesSpinBox = QSpinBox()
+        self.checkSaveCheckBox = QCheckBox(env.translate("settingsWindow.checkBox.checkSave"))
         self.showWelcomeMessageCheckBox = QCheckBox(env.translate("settingsWindow.checkBox.showWelcomeMessage"))
         cancelButton = QPushButton(env.translate("button.cancel"))
         okButton = QPushButton(env.translate("button.ok"))
@@ -23,6 +24,7 @@ class SettingsWindow(QWidget):
         settingsLayout = QFormLayout()
         settingsLayout.addRow(QLabel(env.translate("settingsWindow.label.language")),self.languageComboBox)
         settingsLayout.addRow(QLabel(env.translate("settingsWindow.label.maxRecentFiles")),self.recentFilesSpinBox)
+        settingsLayout.addRow(self.checkSaveCheckBox)
         settingsLayout.addRow(self.showWelcomeMessageCheckBox)
 
         buttonLayout = QHBoxLayout()
@@ -45,12 +47,14 @@ class SettingsWindow(QWidget):
         else:
             self.languageComboBox.setCurrentIndex(index)
         self.recentFilesSpinBox.setValue(self.env.settings.get("maxRecentFiles"))
+        self.checkSaveCheckBox.setChecked(self.env.settings.get("checkSave"))
         self.showWelcomeMessageCheckBox.setChecked(self.env.settings.get("showWelcomeMessage"))
         self.show()
 
     def okButtonClicked(self):
-        self.env.settings.set("language",self.languageComboBox.currentData())
-        self.env.settings.set("maxRecentFiles",self.recentFilesSpinBox.value())
-        self.env.settings.set("showWelcomeMessage",self.showWelcomeMessageCheckBox.isChecked())
+        self.env.settings.set("language", self.languageComboBox.currentData())
+        self.env.settings.set("maxRecentFiles", self.recentFilesSpinBox.value())
+        self.env.settings.set("checkSave", self.checkSaveCheckBox.isChecked())
+        self.env.settings.set("showWelcomeMessage" ,self.showWelcomeMessageCheckBox.isChecked())
         self.env.settings.save_to_file(os.path.join(self.env.dataDir,"settings.json"))
         self.close()

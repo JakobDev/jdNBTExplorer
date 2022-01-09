@@ -6,12 +6,14 @@ import json
 import sys
 import os
 
+
 def showMessageBox(title, text):
     messageBox = QMessageBox()
     messageBox.setWindowTitle(title)
     messageBox.setText(text)
-    messageBox.setStandardButtons(QMessageBox.StandardButtons.Ok)
+    messageBox.setStandardButtons(QMessageBox.StandardButton.Ok)
     messageBox.exec()
+
 
 def stringToList(string,content_type):
     string = string[1:-1]
@@ -23,18 +25,20 @@ def stringToList(string,content_type):
             array.append(content_type(i))
     return array
 
+
 def getDataPath() -> str:
     if platform.system() == "Windows":
-        return os.path.join(os.getenv("appdata"),"jdNBTExplorer")
+        return os.path.join(os.getenv("appdata"), "jdNBTExplorer")
     elif platform.system() == "Darwin":
-        return os.path.join(str(Path.home()),"Library","Application Support","jdNBTExplorer")
+        return os.path.join(str(Path.home()),"Library", "Application Support", "jdNBTExplorer")
     elif platform.system() == "Haiku":
-        return os.path.join(str(Path.home()),"config","settings","jdNBTExplorer")
+        return os.path.join(str(Path.home()),"config", "settings", "jdNBTExplorer")
     else:
         if os.getenv("XDG_DATA_HOME"):
-            return os.path.join(os.getenv("XDG_DATA_HOME"),"jdNBTExplorer")
+            return os.path.join(os.getenv("XDG_DATA_HOME"), "jdNBTExplorer")
         else:
-            return os.path.join(str(Path.home()),".local","share","jdNBTExplorer")
+            return os.path.join(str(Path.home()), ".local", "share", "jdNBTExplorer")
+
 
 def readJsonFile(path: str,default: Any) -> Any:
     """

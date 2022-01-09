@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=jdNBTExplorer
+Terminal=false
+Type=Application
+Icon=jdNBTExplorer
+Exec=jdNBTExplorer
+Comment=A Editor for Minecraft NBT files
+comment[de]=EinEditor für Minecraft NBT Dateien
+Categories=Game;
+Keywords=Minecraft;NBT

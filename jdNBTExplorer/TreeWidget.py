@@ -72,6 +72,7 @@ class TagItem(QTreeWidgetItem):
 class TreeWidget(QTreeWidget):
     def __init__(self, env):
         super().__init__()
+        self.setAcceptDrops(True)
         self.env = env
         self.NoneTag = None
         self.setHeaderLabels((env.translate("treeWidget.header.name"), env.translate("treeWidget.header.value"),env.translate("treeWidget.header.type")))
@@ -80,6 +81,10 @@ class TreeWidget(QTreeWidget):
         self.header().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         self.itemDoubleClicked.connect(self.editTag)
         self.currentItemChanged.connect(self.updateMenu)
+         # self.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
+        #self.setAcceptDrops(True)
+        #self.setDragEnabled(True)
+        #self.setAllowDrag(True)
 
     def updateMenu(self, item):
         if item == None:
@@ -115,6 +120,7 @@ class TreeWidget(QTreeWidget):
         try:
             nbtfile = nbt.nbt.NBTFile(path,"rb")
         except:
+            print("FFF")
             showMessageBox(self.env.translate("treeWidget.messageBox.cantRead.title"),self.env.translate("treeWidget.messageBox.cantRead.text") % path)
             return
         rootItem = TagItem(0)
@@ -351,3 +357,18 @@ class TreeWidget(QTreeWidget):
 
     def contextMenuEvent(self, event):
         self.env.mainWindow.tagMenu.popup(QCursor.pos())
+
+    def dropEvent(self, event):
+        event.accept()
+        mimeData = event.mimeData()
+        if mimeData.hasUrls():
+            path = mimeData.urls()[0].toLocalFile()
+            if os.path.isdir(path):
+                self.treeWidget.clearItems()
+                self.env.mainWindow.openDirectory(path)
+            else:
+                self.env.mainWindow.openFile(path)
+
+    def mimeTypes(self):
+        # This is needed for dropping files in a QTreeWidget
+        return ['text/uri-list']

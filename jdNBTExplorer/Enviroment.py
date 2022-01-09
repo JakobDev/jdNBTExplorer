@@ -7,7 +7,7 @@ import os
 
 class Enviroment():
     def __init__(self):
-        self.version = "1.1"
+        self.version = "1.2"
         self.modified = False
         self.dataDir = getDataPath()
         self.programDir = os.path.dirname(os.path.realpath(__file__))
@@ -16,7 +16,8 @@ class Enviroment():
         default_settings = {
             "language": "default",
             "maxRecentFiles": 10,
-            "showWelcomeMessage": True
+            "showWelcomeMessage": True,
+            "checkSave": True
         }
         self.settings = Settings(default_settings=default_settings)
         self.settings.load_from_file(os.path.join(self.dataDir,"settings.json"))

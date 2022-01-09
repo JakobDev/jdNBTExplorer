@@ -14,7 +14,7 @@ class AboutWindow(QWidget):
         aboutMessage += (env.translate("aboutWindow.label.title") % env.version) + "<br><br>"
         aboutMessage += env.translate("aboutWindow.label.description") + "<br><br>"
         aboutMessage +=  env.translate("aboutWindow.label.license") + "<br><br>"
-        aboutMessage += "Copyright © 2021 JakobDev<br><br>"
+        aboutMessage += "Copyright © 2021-2022 JakobDev<br><br>"
         aboutMessage += "</center>"
         aboutLabel = QLabel(aboutMessage)
 

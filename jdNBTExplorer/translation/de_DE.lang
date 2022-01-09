@@ -52,6 +52,7 @@ settingsWindow.title=Einstellungen
 settingsWindow.label.language=Sprache
 settingsWindow.comboBox.systemLanguage=Benutze Systemsprache
 settingsWindow.label.maxRecentFiles=Länge der Liste der zuletzt geöffneten Dateien
+settingsWindow.checkBox.checkSave=Vor dem schließen ungeöffneter Dateien nachfragen
 settingsWindow.checkBox.showWelcomeMessage=Zeige Willkommensnachricht beim Starten
 
 aboutWindow.title=Über
@@ -66,3 +67,6 @@ welcomeMessage.checkBox=Beim Starten anzeigen
 
 fileNotFound.title=Datei nicht gefunden
 fileNotFound.text=Die angegebene Datei wurde nicht gefunden
+
+noNBTFile.title=Keine NBT Datei
+noNBTFile.text=Diese Datei sieht nicht nach einer NBT Datei aus

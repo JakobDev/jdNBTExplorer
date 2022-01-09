@@ -52,6 +52,7 @@ settingsWindow.title=Preferences
 settingsWindow.label.language=Language
 settingsWindow.comboBox.systemLanguage=Use system default
 settingsWindow.label.maxRecentFiles=Length of recent files list
+settingsWindow.checkBox.checkSave=Ask before closing unsaved Files
 settingsWindow.checkBox.showWelcomeMessage=Show welcome message on startup
 
 aboutWindow.title=About
@@ -66,3 +67,6 @@ welcomeMessage.checkBox=Show this message on startup
 
 fileNotFound.title=File not found
 fileNotFound.text=The given file was not found
+
+noNBTFile.title=Not a NBT File
+noNBTFile.text=This file does not look like a NBT file

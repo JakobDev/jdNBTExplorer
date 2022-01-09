@@ -5,7 +5,7 @@ with open("README.md","r",encoding="utf-8") as f:
     description = f.read()
 
 setup(name="jdNBTExplorer",
-    version="1.1",
+    version="1.2",
     description="A Editor for Minecraft NBT files",
     long_description=description,
     long_description_content_type="text/markdown",
