@@ -269,13 +269,11 @@ class TreeWidget(QTreeWidget):
     def getSaveList(self,item,tags):
         for i in range(item.childCount()):
             child = item.child(i)
-            tagType = child.tagType()
             tags.append(self.getTag(child))
 
     def getSaveCompound(self,item,tags):
         for i in range(item.childCount()):
             child = item.child(i)
-            tagType = child.tagType()
             tag = self.getTag(child)
             tags[tag.name] = tag
 
