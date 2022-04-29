@@ -101,13 +101,13 @@ class EditWindow(QWidget):
         if typeIndex == TypeIndexNames.INT or typeIndex == TypeIndexNames.LONG or typeIndex == TypeIndexNames.BYTE or typeIndex == TypeIndexNames.SHORT:
             try:
                 int(self.valueEdit.text())
-            except:
+            except Exception:
                 showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
                 return
         elif typeIndex == TypeIndexNames.DOUBLE or typeIndex == TypeIndexNames.FLOAT:
             try:
                 float(self.valueEdit.text())
-            except:
+            except Exception:
                 showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
                 return
         elif typeIndex == TypeIndexNames.INT_ARRAY:
@@ -117,7 +117,7 @@ class EditWindow(QWidget):
                     continue
                 try:
                     int(i)
-                except:
+                except Exception:
                     showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
                     return
         if self.isNew:

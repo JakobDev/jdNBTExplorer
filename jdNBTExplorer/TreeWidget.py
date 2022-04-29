@@ -119,8 +119,7 @@ class TreeWidget(QTreeWidget):
     def openNBTFile(self, path):
         try:
             nbtfile = nbt.nbt.NBTFile(path,"rb")
-        except:
-            print("FFF")
+        except Exception:
             showMessageBox(self.env.translate("treeWidget.messageBox.cantRead.title"),self.env.translate("treeWidget.messageBox.cantRead.text") % path)
             return
         rootItem = TagItem(0)
