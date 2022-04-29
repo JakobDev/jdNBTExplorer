@@ -87,7 +87,7 @@ class TreeWidget(QTreeWidget):
         #self.setAllowDrag(True)
 
     def updateMenu(self, item):
-        if item == None:
+        if item is None:
             return
         if item.tagType() == "compound" or item.tagType() == "root":
             self.env.mainWindow.editTagAction.setEnabled(False)
@@ -174,7 +174,7 @@ class TreeWidget(QTreeWidget):
             item.setTagType("compound")
         elif isinstance(value,nbt.nbt.TAG_List):
             item.setTagType("list")
-        elif value.value == None:
+        elif value.value is None:
             item.setTagType("none")
             self.NoneTag = value
         else:
