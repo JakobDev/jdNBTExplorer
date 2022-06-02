@@ -13,6 +13,9 @@ import os
 def main():
     app = QApplication(sys.argv)
     env = Enviroment()
+
+    app.setDesktopFileName("com.gitlab.jakobdev.jdnbtexplorer")
+    app.setApplicationName("jdNBTExplorer")
     app.setWindowIcon(env.programIcon)
 
     env.editWindow = EditWindow(env)
