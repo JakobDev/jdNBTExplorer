@@ -129,7 +129,7 @@
     <message>
         <location filename="../MainWindow.py" line="152"/>
         <source>The File has been modified. Do you want to save your changes?</source>
-        <translation>Die datei wurde geändert. Möchstest du die Änderungen speichern?</translation>
+        <translation>Die Datei wurde geändert. Möchstest du die Änderungen speichern?</translation>
     </message>
     <message>
         <location filename="../MainWindow.py" line="162"/>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../ui/MainWindow.ui" line="0"/>
         <source>New Tag</source>
-        <translation></translation>
+        <translation>Neuer Tag</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.ui" line="0"/>
