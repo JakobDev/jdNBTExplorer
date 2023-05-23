@@ -1,9 +1,11 @@
-from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView
-from .Functions import showMessageBox, stringToList
+from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView, QMessageBox
+from PyQt6.QtCore import QCoreApplication
+from .Functions import stringToList
 from PyQt6.QtGui import QCursor
 import copy
 import nbt
 import os
+
 
 class TagItem(QTreeWidgetItem):
     def __init__(self, parent):
@@ -69,22 +71,19 @@ class TagItem(QTreeWidgetItem):
     def getChunkCords(self):
         return self.pos_x, self.pos_z
 
+
 class TreeWidget(QTreeWidget):
     def __init__(self, env):
         super().__init__()
         self.setAcceptDrops(True)
         self.env = env
         self.NoneTag = None
-        self.setHeaderLabels((env.translate("treeWidget.header.name"), env.translate("treeWidget.header.value"),env.translate("treeWidget.header.type")))
+        self.setHeaderLabels((QCoreApplication.translate("TreeWidget", "Name"), QCoreApplication.translate("TreeWidget", "Value"), QCoreApplication.translate("TreeWidget", "Type")))
         self.header().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.header().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         self.header().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         self.itemDoubleClicked.connect(self.editTag)
         self.currentItemChanged.connect(self.updateMenu)
-         # self.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
-        #self.setAcceptDrops(True)
-        #self.setDragEnabled(True)
-        #self.setAllowDrag(True)
 
     def updateMenu(self, item):
         if item is None:
@@ -108,7 +107,7 @@ class TreeWidget(QTreeWidget):
         self.env.mainWindow.newCompoundAction.setEnabled(True)
         self.env.mainWindow.newListAction.setEnabled(True)
 
-    def newFile(self, path):
+    def newFile(self, path: str) -> None:
         rootItem = TagItem(0)
         rootItem.setText(0,os.path.basename(path))
         rootItem.setPath(path)
@@ -116,12 +115,13 @@ class TreeWidget(QTreeWidget):
         rootItem.setFileType("nbt")
         self.addTopLevelItem(rootItem)
 
-    def openNBTFile(self, path):
+    def openNBTFile(self, path: str) -> None:
         try:
             nbtfile = nbt.nbt.NBTFile(path,"rb")
         except Exception:
-            showMessageBox(self.env.translate("treeWidget.messageBox.cantRead.title"),self.env.translate("treeWidget.messageBox.cantRead.text") % path)
+            QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Can't read file"), QCoreApplication.translate("TreeWidget", "Can't read {{path}}. Maybe it's not a NBT File.").replace("{{path}}", path))
             return
+
         rootItem = TagItem(0)
         rootItem.setText(0,os.path.basename(path))
         rootItem.setPath(path)
@@ -130,7 +130,7 @@ class TreeWidget(QTreeWidget):
         self.parseCombound(rootItem,nbtfile)
         self.addTopLevelItem(rootItem)
 
-    def openRegionFile(self,path):
+    def openRegionFile(self, path: str) -> None:
         region = nbt.region.RegionFile(path,"rb")
         rootItem = TagItem(0)
         rootItem.setText(0,os.path.basename(path))
@@ -177,8 +177,6 @@ class TreeWidget(QTreeWidget):
         elif value.value is None:
             item.setTagType("none")
             self.NoneTag = value
-        else:
-            print(type(value))
         item.updateTypeText()
         if hasattr(value,"items"):
             self.parseCombound(item,value)
@@ -209,16 +207,7 @@ class TreeWidget(QTreeWidget):
                 self.getSaveList(item,f.tags)
                 f.write_file(item.getPath())
             elif item.getFileType() == "region":
-                showMessageBox("Not supported","Saving a region file is currently not supported")
-                #region = nbt.region.RegionFile(item.getPath(),"rb")
-                #for i in range(item.childCount()):
-                    #x, z = item.child(i).getChunkCords()
-                   # self.getItems(item.child(i),region.get_nbt(x,z).tags)
-                    #self.getSaveList(item.child(i),region.get_nbt(x,z).tags)
-                    #f = nbt.nbt.NBTFile()
-                    #region.write_chunk(x,z,f)
-                #region.close()
-                #region.close()
+                QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Not supported"), QCoreApplication.translate("TreeWidget", "Saving a region file is currently not supported"))
             self.env.modified = False
 
     def getTag(self, child):
@@ -301,7 +290,7 @@ class TreeWidget(QTreeWidget):
     def newCompound(self):
         item = self.currentItem()
         if item:
-            name, ok = QInputDialog.getText(self,self.env.translate("treeWidget.messageBox.newCompound.title"),self.env.translate("treeWidget.messageBox.newCompound.text"))
+            name, ok = QInputDialog.getText(self, QCoreApplication.translate("TreeWidget", "New Compound"), QCoreApplication.translate("TreeWidget", "Please enter a name for the new compound"))
             if not ok or name == '':
                 return
             if item.tagType() == "compound" or item.tagType() == "list" or item.tagType() == "root":
@@ -316,7 +305,7 @@ class TreeWidget(QTreeWidget):
     def newList(self):
         item = self.currentItem()
         if item:
-            name, ok = QInputDialog.getText(self,self.env.translate("treeWidget.messageBox.newCompound.title"),self.env.translate("treeWidget.messageBox.newCompound.text"))
+            name, ok = QInputDialog.getText(self, QCoreApplication.translate("TreeWidget", "New List"), QCoreApplication.translate("TreeWidget", "Please enter a name for the new List"))
             if not ok or name == '':
                 return
             if item.tagType() == "compound" or item.tagType() == "list" or item.tagType() == "root":
@@ -331,7 +320,7 @@ class TreeWidget(QTreeWidget):
     def renameItem(self):
         item = self.currentItem()
         if item:
-            name, ok = QInputDialog.getText(self,self.env.translate("treeWidget.messageBox.rename.title"),self.env.translate("treeWidget.messageBox.rename.text"),text=item.text(0))
+            name, ok = QInputDialog.getText(self, QCoreApplication.translate("TreeWidget", "Rename"), QCoreApplication.translate("TreeWidget", "Please enter a new Name"), text=item.text(0))
             if ok and name != '':
                 item.setText(0,name)
                 self.env.modified = True

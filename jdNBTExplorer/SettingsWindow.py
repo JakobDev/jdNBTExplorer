@@ -1,57 +1,55 @@
-from PyQt6.QtWidgets import QWidget, QComboBox, QSpinBox, QCheckBox, QPushButton, QLabel, QLayout, QFormLayout, QVBoxLayout, QHBoxLayout
+from .ui_compiled.SettingsWindow import Ui_SettingsWindow
+from PyQt6.QtCore import QCoreApplication
+from .Languages import getLanguageNames
+from PyQt6.QtWidgets import QDialog
+from typing import TYPE_CHECKING
+from .Settings import Settings
+import sys
 import os
 
-class SettingsWindow(QWidget):
-    def __init__(self,env):
+
+if TYPE_CHECKING:
+    from .Environment import Environment
+
+
+class SettingsWindow(QDialog, Ui_SettingsWindow):
+    def __init__(self, env: "Environment") -> None:
         super().__init__()
         self.env = env
 
-        self.languageComboBox = QComboBox()
-        self.recentFilesSpinBox = QSpinBox()
-        self.checkSaveCheckBox = QCheckBox(env.translate("settingsWindow.checkBox.checkSave"))
-        self.showWelcomeMessageCheckBox = QCheckBox(env.translate("settingsWindow.checkBox.showWelcomeMessage"))
-        cancelButton = QPushButton(env.translate("button.cancel"))
-        okButton = QPushButton(env.translate("button.ok"))
+        self.setupUi(self)
 
-        self.languageComboBox.addItem(env.translate("settingsWindow.comboBox.systemLanguage"),"default")
-        for i in os.listdir(os.path.join(env.programDir,"translation")):
-            langCode = i[:-5]
-            self.languageComboBox.addItem(env.translate(f"language.{langCode}"),langCode)
+        foundTranslations = False
+        languageNames = getLanguageNames()
+        self.languageComboBox.addItem(QCoreApplication.translate("SettingsWindow", "System language"), "default")
+        self.languageComboBox.addItem("English", "en")
+        for i in os.listdir(os.path.join(env.programDir, "translations")):
+            if i.endswith(".qm"):
+                lang = i.removeprefix("jdNBTExplorer_").removesuffix(".qm")
+                self.languageComboBox.addItem(languageNames.get(lang, lang), lang)
+                foundTranslations = True
+        if not foundTranslations:
+             print("No compiled translations found. Please run tools/BuildTranslations to build the Translations.py.", file=sys.stderr)
 
-        cancelButton.clicked.connect(self.close)
-        okButton.clicked.connect(self.okButtonClicked)
+        self.resetButton.clicked.connect(lambda: self.applySettings(Settings()))
+        self.cancelButton.clicked.connect(self.close)
+        self.okButton.clicked.connect(self.okButtonClicked)
 
-        settingsLayout = QFormLayout()
-        settingsLayout.addRow(QLabel(env.translate("settingsWindow.label.language")),self.languageComboBox)
-        settingsLayout.addRow(QLabel(env.translate("settingsWindow.label.maxRecentFiles")),self.recentFilesSpinBox)
-        settingsLayout.addRow(self.checkSaveCheckBox)
-        settingsLayout.addRow(self.showWelcomeMessageCheckBox)
-
-        buttonLayout = QHBoxLayout()
-        buttonLayout.addStretch(1)
-        buttonLayout.addWidget(cancelButton)
-        buttonLayout.addWidget(okButton)
-
-        mainLayout = QVBoxLayout()
-        mainLayout.addLayout(settingsLayout)
-        mainLayout.addLayout(buttonLayout)
-        mainLayout.setSizeConstraint(QLayout.SizeConstraint.SetFixedSize)
-
-        self.setLayout(mainLayout)
-        self.setWindowTitle(env.translate("settingsWindow.title"))
-
-    def openWindow(self):
-        index = self.languageComboBox.findData(self.env.settings.get("language"))
+    def applySettings(self, settings: Settings) -> None:
+        index = self.languageComboBox.findData(settings.get("language"))
         if index == -1:
             self.languageComboBox.setCurrentIndex(0)
         else:
             self.languageComboBox.setCurrentIndex(index)
-        self.recentFilesSpinBox.setValue(self.env.settings.get("maxRecentFiles"))
-        self.checkSaveCheckBox.setChecked(self.env.settings.get("checkSave"))
-        self.showWelcomeMessageCheckBox.setChecked(self.env.settings.get("showWelcomeMessage"))
-        self.show()
+        self.recentFilesSpinBox.setValue(settings.get("maxRecentFiles"))
+        self.checkSaveCheckBox.setChecked(settings.get("checkSave"))
+        self.showWelcomeMessageCheckBox.setChecked(settings.get("showWelcomeMessage"))
 
-    def okButtonClicked(self):
+    def openWindow(self) -> None:
+        self.applySettings(self.env.settings)
+        self.exec()
+
+    def okButtonClicked(self) -> None:
         self.env.settings.set("language", self.languageComboBox.currentData())
         self.env.settings.set("maxRecentFiles", self.recentFilesSpinBox.value())
         self.env.settings.set("checkSave", self.checkSaveCheckBox.isChecked())

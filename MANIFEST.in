@@ -1,4 +1,6 @@
-include jdNBTExplorer/translation/*
+include jdNBTExplorer/translations/*.ts
+exclude jdNBTExplorer/ui_compiled/*
 include jdNBTExplorer/Logo.png
-include README.md
-include LICENSE
+include jdNBTExplorer/ui/*
+include BuildBackend.py
+exclude tools/*

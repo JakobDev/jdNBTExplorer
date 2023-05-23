@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools", "PyQt6", "wheel"]
+build-backend = "BuildBackend"
+backend-path = ["."]
+
+[project]
+name = "jdNBTExplorer"
+description = "A simple program for creating animated Images"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["JakobDev","PyQt","PyQt6","Minecraft","NBT","English","German"]
+license = { text = "GPL-3" }
+authors = [
+    { name = "JakobDev", email = "jakobdev@gmx.de" }
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Environment :: Other Environment",
+    "Environment :: X11 Applications :: Qt",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Natural Language :: German",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "PyQt6",
+  "nbt",
+]
+dynamic = ["version"]
+
+[project.urls]
+Source = "https://codeberg.org/JakobDev/jdNBTExplorer"
+Issues = "https://codeberg.org/JakobDev/jdNBTExplorer/issues"
+Translate = "https://translate.codeberg.org/projects/jdNBTExplorer"
+Donation = "https://ko-fi.com/jakobdev"
+
+[project.gui-scripts]
+jdNBTExplorer = "jdNBTExplorer:main"
+
+[tool.setuptools.package-dir]
+jdNBTExplorer = "jdNBTExplorer"
+
+[tool.setuptools.dynamic]
+version = { file = "jdNBTExplorer/version.txt" }

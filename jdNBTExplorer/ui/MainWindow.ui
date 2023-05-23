@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">jdNBTExplorer</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="recentFilesMenu">
+     <property name="title">
+      <string>Recent Files</string>
+     </property>
+     <addaction name="actionPlaceholder"/>
+    </widget>
+    <addaction name="newFileAction"/>
+    <addaction name="separator"/>
+    <addaction name="openAction"/>
+    <addaction name="recentFilesMenu"/>
+    <addaction name="openDirectoryAction"/>
+    <addaction name="separator"/>
+    <addaction name="saveAction"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <widget class="QMenu" name="tagMenu">
+    <property name="title">
+     <string>Tag</string>
+    </property>
+    <addaction name="newTagAction"/>
+    <addaction name="editTagAction"/>
+    <addaction name="separator"/>
+    <addaction name="newCompoundAction"/>
+    <addaction name="newListAction"/>
+    <addaction name="separator"/>
+    <addaction name="renameCompoundAction"/>
+    <addaction name="removeTagAction"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string notr="true">?</string>
+    </property>
+    <addaction name="showWelcomeMessageAction"/>
+    <addaction name="separator"/>
+    <addaction name="viewSourceAction"/>
+    <addaction name="reportBugAction"/>
+    <addaction name="translateAction"/>
+    <addaction name="donateAction"/>
+    <addaction name="separator"/>
+    <addaction name="aboutAction"/>
+    <addaction name="aboutQtAction"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="settingsAction"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="tagMenu"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="newFileAction">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="openAction">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionPlaceholder">
+   <property name="text">
+    <string notr="true">Placeholder</string>
+   </property>
+  </action>
+  <action name="openDirectoryAction">
+   <property name="text">
+    <string>Open Directory</string>
+   </property>
+  </action>
+  <action name="saveAction">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="newTagAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>New Tag</string>
+   </property>
+  </action>
+  <action name="editTagAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Edit Tag</string>
+   </property>
+  </action>
+  <action name="newCompoundAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>New Compound</string>
+   </property>
+  </action>
+  <action name="newListAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>New List</string>
+   </property>
+  </action>
+  <action name="renameCompoundAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Rename</string>
+   </property>
+  </action>
+  <action name="removeTagAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="settingsAction">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="showWelcomeMessageAction">
+   <property name="text">
+    <string>Show Welcome Dialog</string>
+   </property>
+  </action>
+  <action name="aboutAction">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="aboutQtAction">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="viewSourceAction">
+   <property name="text">
+    <string>View Source</string>
+   </property>
+  </action>
+  <action name="reportBugAction">
+   <property name="text">
+    <string>Report Bug</string>
+   </property>
+  </action>
+  <action name="translateAction">
+   <property name="text">
+    <string>Translate</string>
+   </property>
+  </action>
+  <action name="donateAction">
+   <property name="text">
+    <string>Donate</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

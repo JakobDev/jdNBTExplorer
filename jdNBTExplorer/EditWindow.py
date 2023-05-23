@@ -1,6 +1,13 @@
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit, QComboBox, QHBoxLayout, QVBoxLayout, QGridLayout
-from .Functions import showMessageBox
+from .ui_compiled.EditWindow import Ui_EditWindow
+from PyQt6.QtWidgets import QDialog, QMessageBox
+from PyQt6.QtCore import QCoreApplication
+from typing import TYPE_CHECKING
 from .TreeWidget import TagItem
+
+
+if TYPE_CHECKING:
+    from .Environment import Environment
+
 
 class TypeIndexNames():
     INT = 0
@@ -15,16 +22,15 @@ class TypeIndexNames():
     SHORT = 9
     NONE = 10
 
-class EditWindow(QWidget):
-    def __init__(self, env):
+
+class EditWindow(QDialog, Ui_EditWindow):
+    def __init__(self, env: "Environment"):
         super().__init__()
         self.env = env
-        self.nameEdit = QLineEdit()
-        self.valueEdit = QLineEdit()
-        self.typeComboBox = QComboBox()
+
+        self.setupUi(self)
+
         self.typelist = ["int","int_array","long","long_array","double","float","byte","byte_array","string","short","none"]
-        okButton = QPushButton(env.translate("button.ok"))
-        cancelButton = QPushButton(env.translate("button.cancel"))
 
         self.typeComboBox.addItem("Int")
         self.typeComboBox.addItem("IntArray")
@@ -38,40 +44,21 @@ class EditWindow(QWidget):
         self.typeComboBox.addItem("Short")
         self.typeComboBox.addItem("None")
 
-        okButton.clicked.connect(self.okButtonClicked)
-        cancelButton.clicked.connect(self.close)
+        self.buttonBox.accepted.connect(self.okButtonClicked)
+        self.buttonBox.rejected.connect(self.close)
 
-        gridLayout = QGridLayout()
-        gridLayout.addWidget(QLabel(env.translate("editWindow.label.name")),0,0)
-        gridLayout.addWidget(self.nameEdit,0,1)
-        gridLayout.addWidget(QLabel(env.translate("editWindow.label.value")),1,0)
-        gridLayout.addWidget(self.valueEdit,1,1)
-        gridLayout.addWidget(QLabel(env.translate("editWindow.label.type")),2,0)
-        gridLayout.addWidget(self.typeComboBox,2,1)
-
-        buttonLayout = QHBoxLayout()
-        buttonLayout.addStretch(1)
-        buttonLayout.addWidget(okButton)
-        buttonLayout.addWidget(cancelButton)
-
-        mainLayout = QVBoxLayout()
-        mainLayout.addLayout(gridLayout)
-        mainLayout.addLayout(buttonLayout)
-
-        self.setLayout(mainLayout)
-
-    def openWindow(self, isNew, item, taglist: bool=False,name: str=None):
+    def openWindow(self, isNew, item, taglist: bool = False, name: str | None = None):
         if isNew:
             self.nameEdit.setText(name or "")
             self.valueEdit.setText("")
             self.typeComboBox.setCurrentIndex(0)
-            self.setWindowTitle(self.env.translate("editWindow.title.new"))
+            self.setWindowTitle(QCoreApplication.translate("EditWindow", "New"))
         else:
             self.nameEdit.setText(item.text(0))
             self.valueEdit.setText(item.text(1))
             tagType = item.tagType()
             self.typeComboBox.setCurrentIndex(self.typelist.index(tagType))
-            self.setWindowTitle(self.env.translate("editWindow.title.edit"))
+            self.setWindowTitle(QCoreApplication.translate("EditWindow", "Edit"))
         if taglist:
             self.nameEdit.setEnabled(False)
             self.typeComboBox.setEnabled(False)
@@ -90,25 +77,25 @@ class EditWindow(QWidget):
             self.typeComboBox.setEnabled(True)
         self.item = item
         self.isNew = isNew
-        self.show()
-        self.setFocus()
+        self.exec()
 
     def okButtonClicked(self):
-        if self.nameEdit.text() =="":
-            showMessageBox(self.env.translate("editWindow.messageBox.noName.title"),self.env.translate("editWindow.messageBox.noName.text"))
+        if self.nameEdit.text().strip() == "":
+            QMessageBox.critical(self, QCoreApplication.translate("EditWindow", "Name can't be empty"), QCoreApplication.translate("EditWindow", "You need to set a Name"))
             return
+
         typeIndex = self.typeComboBox.currentIndex()
         if typeIndex == TypeIndexNames.INT or typeIndex == TypeIndexNames.LONG or typeIndex == TypeIndexNames.BYTE or typeIndex == TypeIndexNames.SHORT:
             try:
                 int(self.valueEdit.text())
             except Exception:
-                showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
+                QMessageBox.critical(self, QCoreApplication.translate("EditWindow", "Invalid Value"), QCoreApplication.translate("EditWindow", "This value is not allowed for this type"))
                 return
         elif typeIndex == TypeIndexNames.DOUBLE or typeIndex == TypeIndexNames.FLOAT:
             try:
                 float(self.valueEdit.text())
             except Exception:
-                showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
+                QMessageBox.critical(self, QCoreApplication.translate("EditWindow", "Invalid Value"), QCoreApplication.translate("EditWindow", "This value is not allowed for this type"))
                 return
         elif typeIndex == TypeIndexNames.INT_ARRAY:
             checkstr = self.valueEdit.text()[1:-1]
@@ -118,12 +105,14 @@ class EditWindow(QWidget):
                 try:
                     int(i)
                 except Exception:
-                    showMessageBox(self.env.translate("editWindow.messageBox.wrongValue.title"),self.env.translate("editWindow.messageBox.wrongValue.text"))
+                    QMessageBox.critical(self, QCoreApplication.translate("EditWindow", "Invalid Value"), QCoreApplication.translate("EditWindow", "This value is not allowed for this type"))
                     return
+
         if self.isNew:
             item = TagItem(self.item)
         else:
             item = self.item
+
         item.setText(0,self.nameEdit.text())
         item.setText(1,self.valueEdit.text())
         item.setTagType(self.typelist[self.typeComboBox.currentIndex()])

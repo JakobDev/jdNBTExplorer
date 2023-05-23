@@ -1,6 +1,17 @@
 __pycache__/
 
-#Some test files
+# Qt translations
+*.qm
+
+# Compiled UI files
+jdNBTExplorer/ui_compiled
+
+# Build
+build/
+dist/
+jdNBTExplorer.egg-info/
+
+# Some test files
 *.dat
 *.mca
 *.dat_old

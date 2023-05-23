@@ -1,38 +1,20 @@
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLayout, QHBoxLayout, QVBoxLayout
-from PyQt6.QtCore import Qt
-import webbrowser
+from .ui_compiled.AboutWindow import Ui_AboutWindow
+from PyQt6.QtWidgets import QDialog
+from typing import TYPE_CHECKING
 
-class AboutWindow(QWidget):
-    def __init__(self,env):
+
+if TYPE_CHECKING:
+    from .Environment import Environment
+
+
+class AboutWindow(QDialog, Ui_AboutWindow):
+    def __init__(self, env: "Environment") -> None:
         super().__init__()
 
-        iconLabel = QLabel()
-        iconLabel.setPixmap(env.programIcon.pixmap(64, 64))
-        iconLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setupUi(self)
 
-        aboutMessage = "<center>"
-        aboutMessage += (env.translate("aboutWindow.label.title") % env.version) + "<br><br>"
-        aboutMessage += env.translate("aboutWindow.label.description") + "<br><br>"
-        aboutMessage +=  env.translate("aboutWindow.label.license") + "<br><br>"
-        aboutMessage += "Copyright © 2021-2022 JakobDev<br><br>"
-        aboutMessage += "</center>"
-        aboutLabel = QLabel(aboutMessage)
+        self.iconLabel.setPixmap(env.programIcon.pixmap(64, 64))
 
-        viewSourceButton = QPushButton(env.translate("aboutWindow.button.viewSource"))
-        closeButton = QPushButton(env.translate("button.close"))
+        self.versionLabel.setText(self.versionLabel.text().replace("{{version}}", env.version))
 
-        viewSourceButton.clicked.connect(lambda: webbrowser.open("https://gitlab.com/JakobDev/jdNBTExplorer"))
-        closeButton.clicked.connect(self.close)
-
-        buttonLayout = QHBoxLayout()
-        buttonLayout.addWidget(viewSourceButton)
-        buttonLayout.addWidget(closeButton)
-
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(iconLabel)
-        mainLayout.addWidget(aboutLabel)
-        mainLayout.addLayout(buttonLayout)
-        mainLayout.setSizeConstraint(QLayout.SizeConstraint.SetFixedSize)
-
-        self.setLayout(mainLayout)
-        self.setWindowTitle(env.translate("aboutWindow.title"))
+        self.closeButton.clicked.connect(self.close)

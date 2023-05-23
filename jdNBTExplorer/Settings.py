@@ -5,8 +5,14 @@ import os
 
 
 class Settings():
-    def __init__(self,default_settings={}):
-        self.default_settings = default_settings
+    def __init__(self):
+        self.default_settings = {
+            "language": "default",
+            "maxRecentFiles": 10,
+            "showWelcomeMessage": True,
+            "checkSave": True
+        }
+
         self.custom_settings = {}
 
     def get(self,key: str) -> Any:

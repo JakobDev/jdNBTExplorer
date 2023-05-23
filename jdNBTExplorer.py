@@ -1,3 +1,3 @@
 #!/usr/bin/env python3
-from jdNBTExplorer.jdNBTExplorer import main
+from jdNBTExplorer import main
 main()

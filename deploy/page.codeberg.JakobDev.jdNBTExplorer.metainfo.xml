@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<component type="desktop">
+  <!--Created with jdAppStreamEdit 6.0-->
+  <id>page.codeberg.JakobDev.jdNBTExplorer</id>
+  <name>jdNBTExplorer</name>
+  <summary>An Editor for Minecraft NBT files</summary>
+  <developer_name>JakobDev</developer_name>
+  <launchable type="desktop-id">page.codeberg.JakobDev.jdNBTExplorer.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used in Minecraft to store data related to your worlds. With jdNBTExplorer, you can view and edit these files directly.</p>
+  </description>
+  <releases>
+    <release version="1.2" date="2022-01-09" type="stable">
+      <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.2</url>
+    </release>
+    <release version="1.1" date="2021-12-01" type="stable">
+      <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.1</url>
+    </release>
+    <release version="1.0" date="2021-05-20" type="stable">
+      <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.0</url>
+    </release>
+  </releases>
+  <url type="homepage">https://codeberg.org/JakobDev/jdNBTExplorer</url>
+  <url type="bugtracker">https://codeberg.org/JakobDev/jdNBTExplorer/issues</url>
+  <url type="donation">https://ko-fi.com/jakobdev</url>
+  <url type="translate">https://translate.codeberg.org/projects/jdNBTExplorer</url>
+  <categories>
+    <category>Game</category>
+    <category>Qt</category>
+  </categories>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+  <content_rating type="oars-1.1"/>
+  <provides>
+    <binary>jdNBTExplorer</binary>
+    <python3>jdNBTExplorer</python3>
+  </provides>
+  <replaces>
+    <id>com.gitlab.jakobdev.jdnbtexplorer</id>
+  </replaces>
+</component>

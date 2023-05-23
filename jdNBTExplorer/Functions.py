@@ -1,4 +1,3 @@
-from PyQt6.QtWidgets import QMessageBox
 from pathlib import Path
 from typing import Any
 import platform
@@ -7,15 +6,7 @@ import sys
 import os
 
 
-def showMessageBox(title, text):
-    messageBox = QMessageBox()
-    messageBox.setWindowTitle(title)
-    messageBox.setText(text)
-    messageBox.setStandardButtons(QMessageBox.StandardButton.Ok)
-    messageBox.exec()
-
-
-def stringToList(string,content_type):
+def stringToList(string: str, content_type):
     string = string[1:-1]
     array = []
     for i in string.split(","):
@@ -28,16 +19,16 @@ def stringToList(string,content_type):
 
 def getDataPath() -> str:
     if platform.system() == "Windows":
-        return os.path.join(os.getenv("appdata"), "jdNBTExplorer")
+        return os.path.join(os.getenv("APPDATA"), "JakobDev", "jdNBTExplorer")
     elif platform.system() == "Darwin":
-        return os.path.join(str(Path.home()),"Library", "Application Support", "jdNBTExplorer")
+        return os.path.join(str(Path.home()),"Library", "Application Support", "JakobDev", "jdNBTExplorer")
     elif platform.system() == "Haiku":
-        return os.path.join(str(Path.home()),"config", "settings", "jdNBTExplorer")
+        return os.path.join(str(Path.home()),"config", "settings", "JakobDev", "jdNBTExplorer")
     else:
         if os.getenv("XDG_DATA_HOME"):
-            return os.path.join(os.getenv("XDG_DATA_HOME"), "jdNBTExplorer")
+            return os.path.join(os.getenv("XDG_DATA_HOME"), "JakobDev", "jdNBTExplorer")
         else:
-            return os.path.join(str(Path.home()), ".local", "share", "jdNBTExplorer")
+            return os.path.join(str(Path.home()), ".local", "share", "JakobDev", "jdNBTExplorer")
 
 
 def readJsonFile(path: str,default: Any) -> Any:
