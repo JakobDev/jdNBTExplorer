@@ -7,6 +7,5 @@ pipeline:
             - twine upload -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
         secrets: [PYPI_USERNAME, PYPI_PASSWORD]
 
-
 when:
     event: tag
