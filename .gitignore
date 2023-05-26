@@ -1,7 +1,10 @@
 __pycache__/
 
-# Qt translations
+# Compiled Qt translations
 *.qm
+
+# Compiled gettext translations
+*.mo
 
 # Compiled UI files
 jdNBTExplorer/ui_compiled
