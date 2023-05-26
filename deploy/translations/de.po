@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-23 14:49+0200\n"
-"PO-Revision-Date: 2023-05-23 15:06+0200\n"
+"POT-Creation-Date: 2023-05-26 16:46+0200\n"
+"PO-Revision-Date: 2023-05-26 16:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -33,3 +33,11 @@ msgstr ""
 "eigenes Dateiformat, von Minecraft, dass verwendet wird um Daten in deinen "
 "Welten zu speichern. Mit jdNBTExplorer kannst du diese Dateien direkt "
 "anzeigen und bearbeiten."
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:16
+msgid "The main window"
+msgstr "Das Hauptfenster"
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:20
+msgid "The window to edit a tag"
+msgstr "Das Fenster zum bearbeiten eines Tags"

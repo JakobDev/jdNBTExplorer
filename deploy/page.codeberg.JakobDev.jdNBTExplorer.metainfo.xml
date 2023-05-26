@@ -11,6 +11,16 @@
   <description>
     <p>jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used in Minecraft to store data related to your worlds. With jdNBTExplorer, you can view and edit these files directly.</p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The main window</caption>
+      <image type="source">https://codeberg.org/JakobDev/jdNBTExplorer/raw/commit/b4c09a3db2ee525dfe299cd925444f2cb6599aee/screenshots/MainWindow.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The window to edit a tag</caption>
+      <image type="source">https://codeberg.org/JakobDev/jdNBTExplorer/raw/commit/b4c09a3db2ee525dfe299cd925444f2cb6599aee/screenshots/EditWindow.png</image>
+    </screenshot>
+  </screenshots>
   <releases>
     <release version="1.2" date="2022-01-09" type="stable">
       <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.2</url>

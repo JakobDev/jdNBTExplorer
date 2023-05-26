@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-23 14:49+0200\n"
+"POT-Creation-Date: 2023-05-26 16:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,4 +27,12 @@ msgid ""
 "jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used "
 "in Minecraft to store data related to your worlds. With jdNBTExplorer, you "
 "can view and edit these files directly."
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:16
+msgid "The main window"
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:20
+msgid "The window to edit a tag"
 msgstr ""
