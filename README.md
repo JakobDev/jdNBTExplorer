@@ -30,7 +30,7 @@ Use this only, when nothing else works.
 This is only for experienced Users and someone, who wants to package jdNBTExplorer for a Distro.
 jdNBTExplorershould be installed as a Python package.
 You can use `pip` or any other tool that can handle Python packages.
-YOu need to have `lrelease` installed to build the Package.
+You need to have `lrelease` installed to build the Package.
 After that, you should run `install-unix-datafiles.py` which wil install things like the Desktop Entry or the Icon in the correct place.
 It defaults to `/usr`, but you can change it with the `--prefix` argument.
 It also applies the translation to this files.
