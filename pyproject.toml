@@ -54,3 +54,15 @@ jdNBTExplorer = "jdNBTExplorer"
 
 [tool.setuptools.dynamic]
 version = { file = "jdNBTExplorer/version.txt" }
+
+[tool.pyproject-appimage]
+script = "jdNBTExplorer"
+output = "jdNBTExplorer.AppImage"
+icon = "jdNBTExplorer/Logo.png"
+rename-icon = "page.codeberg.JakobDev.jdNBTExplorer.png"
+desktop-entry = "deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop"
+gettext-desktop-entry = true
+appstream = "deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml"
+gettext-appstream = true
+gettext-directory = "deploy/translations"
+python-version = "3.11"
