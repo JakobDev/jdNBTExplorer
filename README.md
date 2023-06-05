@@ -72,3 +72,13 @@ It uses gettext, as it is hard to translate this using Qt.
 These files just exists to integrate the translation with Weblate, because Weblate can't translate the Desktop Entry and the AppStream file.
 Make sure you run this when you edited one of these files.
 You need to have gettext installed to use it.
+
+#### UpdateTranslators.py
+This uses git to get a list of all Translators and writes it to `jdNBTExplorer/data/translators.json`.
+This is used to display the translators in the About Dialog.
+You need git to run this script.
+
+#### WriteChangelogHtml.py
+This read the Changelog from `deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml`, converts it to HTML and writes it to `jdNBTExplorer/data/changelog.html`.
+This is used to display the Changelog in the About Dialog.
+You need [appstream-python](https://pypi.org/project/appstream-python) to be installed to use this script.

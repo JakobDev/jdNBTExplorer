@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <component type="desktop">
-  <!--Created with jdAppStreamEdit 6.0-->
+  <!--Created with jdAppStreamEdit 7.0-->
   <id>page.codeberg.JakobDev.jdNBTExplorer</id>
   <name>jdNBTExplorer</name>
   <summary>An Editor for Minecraft NBT files</summary>
@@ -32,12 +32,30 @@
     </release>
     <release version="1.2" date="2022-01-09" type="stable">
       <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.2</url>
+      <description>
+        <ul>
+          <li>Add setting for asking before closing unsaved Files</li>
+          <li>Add support for Drag and Drop</li>
+          <li>Fix Bugs</li>
+        </ul>
+      </description>
     </release>
     <release version="1.1" date="2021-12-01" type="stable">
       <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.1</url>
+      <description>
+        <ul>
+          <li>Add Icon</li>
+          <li>Fix Bugs</li>
+        </ul>
+      </description>
     </release>
     <release version="1.0" date="2021-05-20" type="stable">
       <url>https://codeberg.org/JakobDev/jdNBTExplorer/releases/tag/1.0</url>
+      <description>
+        <ul>
+          <li>First release</li>
+        </ul>
+      </description>
     </release>
   </releases>
   <url type="homepage">https://codeberg.org/JakobDev/jdNBTExplorer</url>

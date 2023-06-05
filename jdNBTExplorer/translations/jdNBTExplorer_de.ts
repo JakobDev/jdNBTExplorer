@@ -5,6 +5,7 @@
     <name>AboutWindow</name>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
+        <location filename="../ui/AboutWindow.ui" line="0"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
@@ -15,8 +16,23 @@
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
-        <source>This program is licensed under GNU GPL 3</source>
-        <translation>Dieses Programm ist unter der GNU GPL 3 lizenziert</translation>
+        <source>This Program is licensed under GPL 3</source>
+        <translation>Dieses Programm ist unter der GPL 3 lizenziert</translation>
+    </message>
+    <message>
+        <location filename="../ui/AboutWindow.ui" line="0"/>
+        <source>Translators</source>
+        <translation>Übersetzer</translation>
+    </message>
+    <message>
+        <location filename="../ui/AboutWindow.ui" line="0"/>
+        <source>The following people translated jdNBTExplorer:</source>
+        <translation>Die folgenden Personen haben jdNBTExplorer übersetzt:</translation>
+    </message>
+    <message>
+        <location filename="../ui/AboutWindow.ui" line="0"/>
+        <source>Changelog</source>
+        <translation>Änderungsprotokoll</translation>
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
@@ -87,6 +103,11 @@
         <location filename="../Languages.py" line="7"/>
         <source>German</source>
         <translation>Deutsch</translation>
+    </message>
+    <message>
+        <location filename="../Languages.py" line="8"/>
+        <source>Dutch</source>
+        <translation>Niederländisch</translation>
     </message>
 </context>
 <context>
