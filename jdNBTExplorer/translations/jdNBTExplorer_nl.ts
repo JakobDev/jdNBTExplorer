@@ -17,22 +17,22 @@
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
         <source>This Program is licensed under GPL 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit programma wordt uitgebracht onder de GPL3-licentie</translation>
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertalers</translation>
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
         <source>The following people translated jdNBTExplorer:</source>
-        <translation type="unfinished"></translation>
+        <translation>De volgende personen hebben jdNBTExplorer vertaald:</translation>
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigingslog</translation>
     </message>
     <message>
         <location filename="../ui/AboutWindow.ui" line="0"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../Languages.py" line="8"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Nederlands</translation>
     </message>
 </context>
 <context>
