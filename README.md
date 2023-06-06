@@ -18,6 +18,15 @@ You can get jdNBTExplorer from [Flathub](https://flathub.org/apps/page.codeberg.
 ### AUR
 Arch Users can get jdNBTExplorer from the [AUR](https://aur.archlinux.org/packages/jdnbtexplorer)
 
+### Sourceforge
+You can get Windows and AppImage Builds from [Sourceforge](https://sourceforge.net/projects/jdnbtexplorer)
+
+### Winget
+You can install jdNBTExplorer using winget:
+```
+winget install JakobDev.jdNBTExplorer
+```
+
 ### pip
 You can install jdNBTExplorer from [PyPI](https://pypi.org/project/jdNBTExplorer) using `pip`:
 ```shell
