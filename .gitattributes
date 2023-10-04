@@ -1,0 +1,2 @@
+# Exclude the data files from code counting
+jdNBTExplorer/data/* linguist-vendored
