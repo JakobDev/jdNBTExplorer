@@ -140,7 +140,7 @@
     <message>
         <location filename="../MainWindow.py" line="111"/>
         <source>Clear</source>
-        <translation>Löschen</translation>
+        <translation>Leeren</translation>
     </message>
     <message>
         <location filename="../MainWindow.py" line="152"/>
