@@ -52,6 +52,6 @@ def main() -> None:
     parser.add_argument("file", nargs='?')
     args = parser.parse_known_args()
     if args[0].file is not None:
-        env.mainWindow.openFile(os.path.abspath(args[0].file))
+        env.mainWindow.openFile(os.path.abspath(args[0].file), True)
 
     sys.exit(app.exec())

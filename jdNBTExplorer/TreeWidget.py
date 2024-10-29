@@ -353,7 +353,7 @@ class TreeWidget(QTreeWidget):
                 self.treeWidget.clearItems()
                 self.env.mainWindow.openDirectory(path)
             else:
-                self.env.mainWindow.openFile(path)
+                self.env.mainWindow.openFile(path, True)
 
     def mimeTypes(self):
         # This is needed for dropping files in a QTreeWidget

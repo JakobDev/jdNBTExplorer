@@ -58,17 +58,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.env.treeWidget.clearItems()
             self.env.treeWidget.newFile(path[0])
 
-    def openFile(self,path: str) -> None:
+    def openFile(self, path: str, clear: bool) -> None:
         if not os.path.isfile(path):
             QMessageBox.critical(self, QCoreApplication.translate("MainWindow", "File not found"), QCoreApplication.translate("MainWindow", "{{path}} was not found").replace("{{path}}", path))
             return
 
         if path.endswith(".dat") or path.endswith(".dat_old"):
-            self.env.treeWidget.clearItems()
+            if clear:
+                self.env.treeWidget.clearItems()
             self.env.treeWidget.openNBTFile(path)
             self.addPathToRecentFiles(path)
         elif path.endswith(".mca"):
-            self.env.treeWidget.clearItems()
+            if clear:
+                self.env.treeWidget.clearItems()
             self.env.treeWidget.openRegionFile(path)
             self.addPathToRecentFiles(path)
         else:
@@ -79,7 +81,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
         path = QFileDialog.getOpenFileName(self)
         if path[0]:
-            self.openFile(path[0])
+            self.openFile(path[0], True)
 
     def addPathToRecentFiles(self,path: str) -> None:
         for count,i in enumerate(self.env.recentFiles):
@@ -117,7 +119,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
         action = self.sender()
         if action:
-            self.openFile(action.text())
+            self.openFile(action.text(), True)
 
     def clearRecentFiles(self) -> None:
         self.env.recentFiles.clear()
@@ -140,7 +142,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if os.path.isdir(filepath):
                 self.openDirectory(filepath)
             elif filepath.endswith(".dat"):
-                self.env.treeWidget.openFile(filepath)
+                self.openFile(filepath, False)
 
     def checkSave(self) -> bool:
         if not self.env.settings.get("checkSave"):
