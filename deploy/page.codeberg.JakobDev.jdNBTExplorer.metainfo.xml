@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<component type="desktop">
-  <!--Created with jdAppStreamEdit 7.0-->
+<component type="desktop-application">
+  <!--Created with jdAppStreamEdit 9.2-->
   <id>page.codeberg.JakobDev.jdNBTExplorer</id>
   <name>jdNBTExplorer</name>
   <summary>An Editor for Minecraft NBT files</summary>
-  <developer_name>JakobDev</developer_name>
-  <launchable type="desktop-id">page.codeberg.JakobDev.jdNBTExplorer.desktop</launchable>
+  <developer id="page.codeberg.jakobdev">
+    <name>JakobDev</name>
+  </developer>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
+  <project_license>GPL-3.0-only</project_license>
   <description>
     <p>jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used in Minecraft to store data related to your worlds. With jdNBTExplorer, you can view and edit these files directly.</p>
   </description>
@@ -22,6 +23,13 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.2" date="2024-10-29" type="stable">
+      <description>
+        <ul>
+          <li>Fix opening directories</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1" date="2023-06-05" type="stable">
       <description>
         <ul>
@@ -65,10 +73,11 @@
       </description>
     </release>
   </releases>
-  <url type="homepage">https://codeberg.org/JakobDev/jdNBTExplorer</url>
+  <url type="homepage">https://jakobdev.codeberg.page/work/app/jdNBTExplorer</url>
   <url type="bugtracker">https://codeberg.org/JakobDev/jdNBTExplorer/issues</url>
   <url type="donation">https://ko-fi.com/jakobdev</url>
   <url type="translate">https://translate.codeberg.org/projects/jdNBTExplorer</url>
+  <url type="vcs-browser">https://codeberg.org/JakobDev/jdNBTExplorer</url>
   <categories>
     <category>Game</category>
     <category>Qt</category>
@@ -78,6 +87,7 @@
     <control>keyboard</control>
   </recommends>
   <content_rating type="oars-1.1"/>
+  <launchable type="desktop-id">page.codeberg.JakobDev.jdNBTExplorer.desktop</launchable>
   <provides>
     <binary>jdNBTExplorer</binary>
     <python3>jdNBTExplorer</python3>
