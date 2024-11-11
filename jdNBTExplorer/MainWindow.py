@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QMainWindow, QFileDialog, QApplication, QCheckBox, QMessageBox
+from .OpenDirectoryTypeDialog import OpenDirectoryTypeDialog
 from .ui_compiled.MainWindow import Ui_MainWindow
-from PyQt6.QtCore import QCoreApplication
+from PyQt6.QtCore import QCoreApplication, Qt
 from typing import TYPE_CHECKING
 from PyQt6.QtGui import QAction
 import webbrowser
@@ -26,7 +27,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.newFileAction.triggered.connect(self.newClicked)
         self.openAction.triggered.connect(self.openClicked)
         self.openDirectoryAction.triggered.connect(self.openDirectoryClicked)
-        self.saveAction.triggered.connect(self.env.treeWidget.saveData)
+        self.saveAction.triggered.connect(self._saveButtonClicked)
         self.exitAction.triggered.connect(self.close)
 
         self.newTagAction.triggered.connect(self.env.treeWidget.newTag)
@@ -132,16 +133,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         path = QFileDialog.getExistingDirectory(self)
-        if path:
-            self.env.treeWidget.clearItems()
-            self.openDirectory(path)
+        if path == "":
+            return
 
-    def openDirectory(self, path: str) -> None:
+        ok, nbtFiles, regionFiles = OpenDirectoryTypeDialog(self).getOpenType()
+        if not ok:
+            return
+
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+
+        self.env.treeWidget.clearItems()
+        self.openDirectory(path, nbtFiles, regionFiles)
+
+        QApplication.restoreOverrideCursor()
+
+    def openDirectory(self, path: str, nbtFiles: bool, regionFiles: bool) -> None:
         for f in os.listdir(path):
-            filepath = os.path.join(path,f)
+            filepath = os.path.join(path, f)
             if os.path.isdir(filepath):
-                self.openDirectory(filepath)
-            elif filepath.endswith(".dat"):
+                self.openDirectory(filepath, nbtFiles, regionFiles)
+            elif filepath.endswith(".dat") and nbtFiles:
+                self.openFile(filepath, False)
+            elif filepath.endswith(".mca") and regionFiles:
                 self.openFile(filepath, False)
 
     def checkSave(self) -> bool:
@@ -159,6 +172,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 return True
             case QMessageBox.StandardButton.Cancel:
                 return False
+
+    def _saveButtonClicked(self) -> None:
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        self.env.treeWidget.saveData()
+        QApplication.restoreOverrideCursor()
 
     def showWelcomeMessage(self) -> None:
         welcomeMessageCheckBox = QCheckBox(QCoreApplication.translate("MainWindow", "Show this message on startup"))
