@@ -1,10 +1,12 @@
 from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView, QMessageBox
 from PyQt6.QtCore import QCoreApplication
+import nbt.region
 from .Functions import stringToList
 from PyQt6.QtGui import QCursor
 import copy
 import nbt
 import os
+import io
 
 
 class TagItem(QTreeWidgetItem):
@@ -71,6 +73,9 @@ class TagItem(QTreeWidgetItem):
     def getChunkCords(self):
         return self.pos_x, self.pos_z
 
+    def isRegionFile(self) -> bool:
+        return self.tag_type == "root" and self.file_type == "region"
+
 
 class TreeWidget(QTreeWidget):
     def __init__(self, env):
@@ -85,10 +90,10 @@ class TreeWidget(QTreeWidget):
         self.itemDoubleClicked.connect(self.editTag)
         self.currentItemChanged.connect(self.updateMenu)
 
-    def updateMenu(self, item):
+    def updateMenu(self, item: TagItem) -> None:
         if item is None:
             return
-        if item.tagType() == "compound" or item.tagType() == "root":
+        if item.tagType() == "compound" or item.tagType() == "root" or item.tagType() == "chunk":
             self.env.mainWindow.editTagAction.setEnabled(False)
         else:
             self.env.mainWindow.editTagAction.setEnabled(True)
@@ -99,13 +104,13 @@ class TreeWidget(QTreeWidget):
                 self.env.mainWindow.renameCompoundAction.setEnabled(False)
         else:
             self.env.mainWindow.renameCompoundAction.setEnabled(False)
-        if item.tagType() == "root":
+        if item.tagType() == "root" or item.tag_type == "chunk":
             self.env.mainWindow.removeTagAction.setEnabled(False)
         else:
             self.env.mainWindow.removeTagAction.setEnabled(True)
-        self.env.mainWindow.newTagAction.setEnabled(True)
-        self.env.mainWindow.newCompoundAction.setEnabled(True)
-        self.env.mainWindow.newListAction.setEnabled(True)
+        self.env.mainWindow.newTagAction.setEnabled(not item.isRegionFile())
+        self.env.mainWindow.newCompoundAction.setEnabled(not item.isRegionFile())
+        self.env.mainWindow.newListAction.setEnabled(not item.isRegionFile())
 
     def newFile(self, path: str) -> None:
         rootItem = TagItem(0)
@@ -207,7 +212,13 @@ class TreeWidget(QTreeWidget):
                 self.getSaveList(item,f.tags)
                 f.write_file(item.getPath())
             elif item.getFileType() == "region":
-                QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Not supported"), QCoreApplication.translate("TreeWidget", "Saving a region file is currently not supported"))
+                region = nbt.region.RegionFile(item.getPath())
+                for childPos in range(item.childCount()):
+                    x, z = item.child(childPos).getChunkCords()
+                    nbtFile = nbt.nbt.NBTFile()
+                    self.getSaveList(item.child(childPos), nbtFile.tags)
+                    region.write_chunk(x, z, nbtFile)
+                region.close()
             self.env.modified = False
 
     def getTag(self, child):
