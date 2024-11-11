@@ -1,12 +1,11 @@
 from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView, QMessageBox
 from PyQt6.QtCore import QCoreApplication
-import nbt.region
 from .Functions import stringToList
 from PyQt6.QtGui import QCursor
+import nbt.region
 import copy
 import nbt
 import os
-import io
 
 
 class TagItem(QTreeWidgetItem):
