@@ -54,6 +54,8 @@ sudo ./install-unix-datafiles.py --prefix /usr/local
 ## Translate
 You can help translating jdNBTExplorer on [Codeberg Translate](https://translate.codeberg.org/projects/jdNBTExplorer)
 
+![Translation status](https://translate.codeberg.org/widget/jdNBTExplorer/jdNBTExplorer/multi-auto.svg)
+
 ## Develop
 jdNBTExploreris written in Python and uses PyQt6 as GUI toolkit. You should have some experience in both.
 You can run `jdNBTExplorer.py`to start jdNBTExplorer from source and test your local changes.
