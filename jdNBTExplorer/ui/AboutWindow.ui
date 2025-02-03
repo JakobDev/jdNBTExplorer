@@ -79,7 +79,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string notr="true">Copyright © 2021-2024 JakobDev</string>
+          <string notr="true">Copyright © 2021-2025 JakobDev</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
