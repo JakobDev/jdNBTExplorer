@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AboutWindow</name>
     <message>
@@ -43,36 +43,36 @@
 <context>
     <name>EditWindow</name>
     <message>
-        <location filename="../EditWindow.py" line="55"/>
+        <location filename="../EditWindow.py" line="56"/>
         <source>New</source>
         <translation>Neu</translation>
     </message>
     <message>
-        <location filename="../EditWindow.py" line="61"/>
+        <location filename="../EditWindow.py" line="62"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../EditWindow.py" line="84"/>
+        <location filename="../EditWindow.py" line="85"/>
         <source>Name can&apos;t be empty</source>
         <translation>Name darf nicht leer sein</translation>
     </message>
     <message>
-        <location filename="../EditWindow.py" line="84"/>
+        <location filename="../EditWindow.py" line="85"/>
         <source>You need to set a Name</source>
         <translation>Du musst einen Namen eingeben</translation>
     </message>
     <message>
-        <location filename="../EditWindow.py" line="108"/>
-        <location filename="../EditWindow.py" line="98"/>
-        <location filename="../EditWindow.py" line="92"/>
+        <location filename="../EditWindow.py" line="109"/>
+        <location filename="../EditWindow.py" line="99"/>
+        <location filename="../EditWindow.py" line="93"/>
         <source>Invalid Value</source>
         <translation>Ungültiger Wert</translation>
     </message>
     <message>
-        <location filename="../EditWindow.py" line="108"/>
-        <location filename="../EditWindow.py" line="98"/>
-        <location filename="../EditWindow.py" line="92"/>
+        <location filename="../EditWindow.py" line="109"/>
+        <location filename="../EditWindow.py" line="99"/>
+        <location filename="../EditWindow.py" line="93"/>
         <source>This value is not allowed for this type</source>
         <translation>Dieser Wert ist für diesen Datentyp ungültig</translation>
     </message>
@@ -113,57 +113,57 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../MainWindow.py" line="63"/>
+        <location filename="../MainWindow.py" line="71"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="63"/>
+        <location filename="../MainWindow.py" line="71"/>
         <source>{{path}} was not found</source>
         <translation>{{path}} wurde nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="75"/>
+        <location filename="../MainWindow.py" line="85"/>
         <source>Not an NBT File</source>
         <translation>Keine NBT Datei</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="75"/>
+        <location filename="../MainWindow.py" line="85"/>
         <source>This File does not look like an NBT File</source>
         <translation>Diese datei sieht nicht wie eine NBT Datei aus</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="100"/>
+        <location filename="../MainWindow.py" line="110"/>
         <source>No recent files</source>
         <translation>Keine zuletzt geöffneten Dateien</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="111"/>
+        <location filename="../MainWindow.py" line="121"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="152"/>
+        <location filename="../MainWindow.py" line="174"/>
         <source>File modified</source>
         <translation>Datei geändert</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="152"/>
+        <location filename="../MainWindow.py" line="174"/>
         <source>The File has been modified. Do you want to save your changes?</source>
         <translation>Die Datei wurde geändert. Möchstest du die Änderungen speichern?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="162"/>
+        <location filename="../MainWindow.py" line="189"/>
         <source>Show this message on startup</source>
         <translation>Diese Nachricht beim Starten anzeigen</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="165"/>
+        <location filename="../MainWindow.py" line="192"/>
         <source>Warning</source>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="166"/>
+        <location filename="../MainWindow.py" line="193"/>
         <source>jdNBTExplorer is a programme that allows you to edit Minecraft&apos;s NBT files. Using it without proper knowledge can destroy your world. Therefore, please always make a backup of your world before using it.</source>
         <translation>jdNBTExplorer ist ein Programm, mit dem du die NBT Dateien von Minecraft bearbeiten kannst. Die unbedarfte Benutzung kann deine Welt zerstören. Bitte mache daher vor der Benutzung immer ein Backup deiner Welt.</translation>
     </message>
@@ -280,6 +280,34 @@
     </message>
 </context>
 <context>
+    <name>OpenDirectoryTypeDialog</name>
+    <message>
+        <location filename="../ui/OpenDirectoryTypeDialog.ui" line="0"/>
+        <source>Open Directory</source>
+        <translation>Verzeichnis öffnen</translation>
+    </message>
+    <message>
+        <location filename="../ui/OpenDirectoryTypeDialog.ui" line="0"/>
+        <source>Which files would you like to open?</source>
+        <translation>Welche Dateien möchtest du öffnen?</translation>
+    </message>
+    <message>
+        <location filename="../ui/OpenDirectoryTypeDialog.ui" line="0"/>
+        <source>Only NBT files</source>
+        <translation>Nur NBT Dateien</translation>
+    </message>
+    <message>
+        <location filename="../ui/OpenDirectoryTypeDialog.ui" line="0"/>
+        <source>Only Region files</source>
+        <translation>Nur Region Dateien</translation>
+    </message>
+    <message>
+        <location filename="../ui/OpenDirectoryTypeDialog.ui" line="0"/>
+        <source>All files</source>
+        <translation>Alle Dateien</translation>
+    </message>
+</context>
+<context>
     <name>SettingsWindow</name>
     <message>
         <location filename="../SettingsWindow.py" line="24"/>
@@ -335,67 +363,57 @@
 <context>
     <name>TreeWidget</name>
     <message>
-        <location filename="../TreeWidget.py" line="81"/>
+        <location filename="../TreeWidget.py" line="24"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="81"/>
+        <location filename="../TreeWidget.py" line="24"/>
         <source>Value</source>
         <translation>Wert</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="81"/>
+        <location filename="../TreeWidget.py" line="24"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="122"/>
+        <location filename="../TreeWidget.py" line="65"/>
         <source>Can&apos;t read file</source>
         <translation>Konnte Datei nicht lesen</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="122"/>
+        <location filename="../TreeWidget.py" line="65"/>
         <source>Can&apos;t read {{path}}. Maybe it&apos;s not a NBT File.</source>
         <translation>Konnte {{path}} nicht lesen. Vielleicht ist es keine NBT Datei.</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="210"/>
-        <source>Not supported</source>
-        <translation>Nicht unterstützt</translation>
-    </message>
-    <message>
-        <location filename="../TreeWidget.py" line="210"/>
-        <source>Saving a region file is currently not supported</source>
-        <translation>das Speichern von regionen wird aktuell nicht unterstützt</translation>
-    </message>
-    <message>
-        <location filename="../TreeWidget.py" line="293"/>
+        <location filename="../TreeWidget.py" line="242"/>
         <source>New Compound</source>
         <translation>Neuer Datenverbund</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="293"/>
+        <location filename="../TreeWidget.py" line="242"/>
         <source>Please enter a name for the new compound</source>
         <translation>Bitte gib einen Namen für den neuen Datenverbund ein</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="308"/>
+        <location filename="../TreeWidget.py" line="257"/>
         <source>New List</source>
         <translation>Neue Liste</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="308"/>
+        <location filename="../TreeWidget.py" line="257"/>
         <source>Please enter a name for the new List</source>
         <translation>Bitte gib einen Namen für die neue Liste ein</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="323"/>
+        <location filename="../TreeWidget.py" line="272"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="323"/>
+        <location filename="../TreeWidget.py" line="272"/>
         <source>Please enter a new Name</source>
         <translation>Bitte gib einen neuen Namen ein</translation>
     </message>
