@@ -1,11 +1,7 @@
 from PyQt6.QtCore import QTranslator, QLocale, QLibraryInfo
-from .SettingsWindow import SettingsWindow
 from PyQt6.QtWidgets import QApplication
-from .AboutWindow import AboutWindow
 from .Environment import Environment
 from .MainWindow import MainWindow
-from .TreeWidget import TreeWidget
-from .EditWindow import EditWindow
 import argparse
 import sys
 import os
@@ -41,10 +37,6 @@ def main() -> None:
     app.installTranslator(app_translator)
     app.installTranslator(qt_translator)
 
-    env.editWindow = EditWindow(env)
-    env.settingsWindow = SettingsWindow(env)
-    env.aboutWindow = AboutWindow(env)
-    env.treeWidget = TreeWidget(env)
     env.mainWindow = MainWindow(env)
     env.mainWindow.showMaximized()
 

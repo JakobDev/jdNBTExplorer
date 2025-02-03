@@ -1,87 +1,26 @@
 from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView, QMessageBox
 from PyQt6.QtCore import QCoreApplication
 from .Functions import stringToList
+from .EditWindow import EditWindow
 from PyQt6.QtGui import QCursor
+from .TagItem import TagItem
 import nbt.region
 import copy
 import nbt
 import os
 
 
-class TagItem(QTreeWidgetItem):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.tag_type = None
-        self.file_path = None
-        self.file_type = None
-        self.pos_x = None
-        self.pos_z = None
-
-    def setTagType(self, name):
-        self.tag_type = name
-
-    def tagType(self):
-        return self.tag_type
-
-    def updateTypeText(self):
-        if self.tag_type == "int":
-            self.setText(2,"Int")
-        elif self.tag_type == "int_array":
-            self.setText(2,"IntArray")
-        elif self.tag_type == "long":
-            self.setText(2,"Long")
-        elif self.tag_type == "long_array":
-            self.setText(2,"LongArray")
-        elif self.tag_type == "double":
-            self.setText(2,"Double")
-        elif self.tag_type == "float":
-            self.setText(2,"Float")
-        elif self.tag_type == "byte":
-            self.setText(2,"Byte")
-        elif self.tag_type == "byte_array":
-            self.setText(2,"ByteArray")
-        elif self.tag_type == "string":
-            self.setText(2,"String")
-        elif self.tag_type == "short":
-            self.setText(2,"Short")
-        elif self.tag_type == "compound":
-            self.setText(2,"Compound")
-        elif self.tag_type == "list":
-            self.setText(2,"List")
-        elif self.tag_type == "none":
-            self.setText(2,"None")
-        elif self.tag_type == "chunk":
-            self.setText(2,"Chunk")
-
-    def setPath(self, path):
-        self.file_path = path
-
-    def getPath(self):
-        return self.file_path
-
-    def setFileType(self, filetype):
-        self.file_type = filetype
-
-    def getFileType(self):
-        return self.file_type
-
-    def setChunkCords(self, x, z):
-        self.pos_x = x
-        self.pos_z = z
-
-    def getChunkCords(self):
-        return self.pos_x, self.pos_z
-
-    def isRegionFile(self) -> bool:
-        return self.tag_type == "root" and self.file_type == "region"
-
-
 class TreeWidget(QTreeWidget):
     def __init__(self, env):
         super().__init__()
+
         self.setAcceptDrops(True)
+
         self.env = env
         self.NoneTag = None
+
+        self._editWindow = EditWindow(self, env)
+
         self.setHeaderLabels((QCoreApplication.translate("TreeWidget", "Name"), QCoreApplication.translate("TreeWidget", "Value"), QCoreApplication.translate("TreeWidget", "Type")))
         self.header().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         self.header().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
@@ -280,22 +219,22 @@ class TreeWidget(QTreeWidget):
         item = self.currentItem()
         if item:
             if item.tagType() == "compound" or item.tagType() == "root":
-                self.env.editWindow.openWindow(True,item)
+                self._editWindow.openWindow(True,item)
             elif item.tagType() == "list":
-                 self.env.editWindow.openWindow(True,item,taglist=True,name=str(item.childCount()))
+                 self._editWindow.openWindow(True,item,taglist=True,name=str(item.childCount()))
             elif item.parent().tagType() == "list":
-                 self.env.editWindow.openWindow(True,item.parent(),taglist=True,name=str(item.parent().childCount()))
+                 self._editWindow.openWindow(True,item.parent(),taglist=True,name=str(item.parent().childCount()))
             else:
-                self.env.editWindow.openWindow(True,item.parent())
+                self._editWindow.openWindow(True,item.parent())
 
     def editTag(self):
         item = self.currentItem()
         if item:
             if item.tagType() != "compound" and  item.tagType() != "list" and item.tagType() != "chunk" and item.tagType() != "root":
                 if item.parent().tagType() == "list":
-                    self.env.editWindow.openWindow(False,item,taglist=True)
+                    self._editWindow.openWindow(False,item,taglist=True)
                 else:
-                    self.env.editWindow.openWindow(False,item)
+                    self._editWindow.openWindow(False,item)
 
     def newCompound(self):
         item = self.currentItem()

@@ -1,6 +1,6 @@
 from .ui_compiled.AboutWindow import Ui_AboutWindow
+from PyQt6.QtWidgets import QWidget, QDialog
 from .Languages import getLanguageNames
-from PyQt6.QtWidgets import QDialog
 from typing import TYPE_CHECKING
 import json
 import os
@@ -11,8 +11,8 @@ if TYPE_CHECKING:
 
 
 class AboutWindow(QDialog, Ui_AboutWindow):
-    def __init__(self, env: "Environment") -> None:
-        super().__init__()
+    def __init__(self, parent: QWidget, env: "Environment") -> None:
+        super().__init__(parent)
 
         self.setupUi(self)
 

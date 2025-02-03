@@ -1,7 +1,7 @@
 from .ui_compiled.SettingsWindow import Ui_SettingsWindow
+from PyQt6.QtWidgets import QWidget, QDialog
 from PyQt6.QtCore import QCoreApplication
 from .Languages import getLanguageNames
-from PyQt6.QtWidgets import QDialog
 from typing import TYPE_CHECKING
 from .Settings import Settings
 import sys
@@ -13,8 +13,8 @@ if TYPE_CHECKING:
 
 
 class SettingsWindow(QDialog, Ui_SettingsWindow):
-    def __init__(self, env: "Environment") -> None:
-        super().__init__()
+    def __init__(self, parent: QWidget, env: "Environment") -> None:
+        super().__init__(parent)
         self.env = env
 
         self.setupUi(self)

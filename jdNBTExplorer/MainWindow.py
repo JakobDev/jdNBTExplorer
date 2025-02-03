@@ -2,6 +2,9 @@ from PyQt6.QtWidgets import QMainWindow, QFileDialog, QApplication, QCheckBox, Q
 from .OpenDirectoryTypeDialog import OpenDirectoryTypeDialog
 from .ui_compiled.MainWindow import Ui_MainWindow
 from PyQt6.QtCore import QCoreApplication, Qt
+from .SettingsWindow import SettingsWindow
+from .AboutWindow import AboutWindow
+from .TreeWidget import TreeWidget
 from typing import TYPE_CHECKING
 from PyQt6.QtGui import QAction
 import webbrowser
@@ -20,7 +23,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
 
-        self.setCentralWidget(env.treeWidget)
+        self._treeWidget = TreeWidget(env)
+        self._aboutWindow = AboutWindow(self, env)
+        self._settingsWindow = SettingsWindow(self, env)
+
+        self.setCentralWidget(self._treeWidget)
 
         self.updateRecentFilesMenu()
 
@@ -30,21 +37,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveAction.triggered.connect(self._saveButtonClicked)
         self.exitAction.triggered.connect(self.close)
 
-        self.newTagAction.triggered.connect(self.env.treeWidget.newTag)
-        self.editTagAction.triggered.connect(self.env.treeWidget.editTag)
-        self.newCompoundAction.triggered.connect(self.env.treeWidget.newCompound)
-        self.newListAction.triggered.connect(self.env.treeWidget.newList)
-        self.renameCompoundAction.triggered.connect(self.env.treeWidget.renameItem)
-        self.removeTagAction.triggered.connect(self.env.treeWidget.removeTag)
+        self.newTagAction.triggered.connect(self._treeWidget.newTag)
+        self.editTagAction.triggered.connect(self._treeWidget.editTag)
+        self.newCompoundAction.triggered.connect(self._treeWidget.newCompound)
+        self.newListAction.triggered.connect(self._treeWidget.newList)
+        self.renameCompoundAction.triggered.connect(self._treeWidget.renameItem)
+        self.removeTagAction.triggered.connect(self._treeWidget.removeTag)
 
-        self.settingsAction.triggered.connect(self.env.settingsWindow.openWindow)
+        self.settingsAction.triggered.connect(self._settingsWindow.openWindow)
 
         self.showWelcomeMessageAction.triggered.connect(self.showWelcomeMessage)
         self.viewSourceAction.triggered.connect(lambda: webbrowser.open("https://codeberg.org/JakobDev/jdNBTExplorer"))
         self.reportBugAction.triggered.connect(lambda: webbrowser.open("https://codeberg.org/JakobDev/jdNBTExplorer/issues"))
         self.translateAction.triggered.connect(lambda: webbrowser.open("https://translate.codeberg.org/projects/jdNBTExplorer"))
         self.donateAction.triggered.connect(lambda: webbrowser.open("https://ko-fi.com/jakobdev"))
-        self.aboutAction.triggered.connect(self.env.aboutWindow.show)
+        self.aboutAction.triggered.connect(self._aboutWindow.show)
         self.aboutQtAction.triggered.connect(QApplication.instance().aboutQt)
 
         if env.settings.get("showWelcomeMessage"):
@@ -56,8 +63,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         path = QFileDialog.getSaveFileName(self)
         if path[0]:
-            self.env.treeWidget.clearItems()
-            self.env.treeWidget.newFile(path[0])
+            self._treeWidget.clearItems()
+            self._treeWidget.newFile(path[0])
 
     def openFile(self, path: str, clear: bool) -> None:
         if not os.path.isfile(path):
@@ -66,13 +73,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if path.endswith(".dat") or path.endswith(".dat_old"):
             if clear:
-                self.env.treeWidget.clearItems()
-            self.env.treeWidget.openNBTFile(path)
+                self._treeWidget.clearItems()
+            self._treeWidget.openNBTFile(path)
             self.addPathToRecentFiles(path)
         elif path.endswith(".mca"):
             if clear:
-                self.env.treeWidget.clearItems()
-            self.env.treeWidget.openRegionFile(path)
+                self._treeWidget.clearItems()
+            self._treeWidget.openRegionFile(path)
             self.addPathToRecentFiles(path)
         else:
             QMessageBox.critical(self, QCoreApplication.translate("MainWindow", "Not an NBT File"), QCoreApplication.translate("MainWindow", "This File does not look like an NBT File"))
@@ -142,7 +149,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
 
-        self.env.treeWidget.clearItems()
+        self._treeWidget.clearItems()
         self.openDirectory(path, nbtFiles, regionFiles)
 
         QApplication.restoreOverrideCursor()
@@ -166,7 +173,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         match QMessageBox.warning(QCoreApplication.translate("MainWindow", "File modified"), QCoreApplication.translate("MainWindow", "The File has been modified. Do you want to save your changes?"), QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel):
             case QMessageBox.StandardButton.Save:
-                self.env.treeWidget.saveData()
+                self._treeWidget.saveData()
                 return True
             case QMessageBox.StandardButton.Discard:
                 return True
@@ -175,13 +182,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def _saveButtonClicked(self) -> None:
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
-        self.env.treeWidget.saveData()
+        self._treeWidget.saveData()
         QApplication.restoreOverrideCursor()
 
     def showWelcomeMessage(self) -> None:
         welcomeMessageCheckBox = QCheckBox(QCoreApplication.translate("MainWindow", "Show this message on startup"))
         welcomeMessageCheckBox.setChecked(self.env.settings.get("showWelcomeMessage"))
-        messageBox = QMessageBox()
+        messageBox = QMessageBox(self)
         messageBox.setWindowTitle(QCoreApplication.translate("MainWindow", "Warning"))
         messageBox.setText(QCoreApplication.translate("MainWindow", "jdNBTExplorer is a programme that allows you to edit Minecraft's NBT files. Using it without proper knowledge can destroy your world. Therefore, please always make a backup of your world before using it."))
         messageBox.setCheckBox(welcomeMessageCheckBox)

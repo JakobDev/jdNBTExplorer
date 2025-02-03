@@ -1,8 +1,8 @@
+from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
 from .ui_compiled.EditWindow import Ui_EditWindow
-from PyQt6.QtWidgets import QDialog, QMessageBox
 from PyQt6.QtCore import QCoreApplication
 from typing import TYPE_CHECKING
-from .TreeWidget import TagItem
+from .TagItem import TagItem
 
 
 if TYPE_CHECKING:
@@ -24,8 +24,9 @@ class TypeIndexNames():
 
 
 class EditWindow(QDialog, Ui_EditWindow):
-    def __init__(self, env: "Environment"):
-        super().__init__()
+    def __init__(self, parent: QWidget, env: "Environment"):
+        super().__init__(parent)
+
         self.env = env
 
         self.setupUi(self)
