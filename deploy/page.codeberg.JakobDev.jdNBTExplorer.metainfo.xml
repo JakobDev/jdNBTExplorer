@@ -23,6 +23,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.3" date="2025-02-04" type="stable">
+      <description>
+        <ul>
+          <li>Allow choosing between file types if opening directory</li>
+          <li>Some improvements to dialogs</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2" date="2024-10-29" type="stable">
       <description>
         <ul>
