@@ -1,9 +1,10 @@
+from PyQt6.QtWidgets import QWidget, QDialog, QApplication, QStyle
 from .ui_compiled.SettingsWindow import Ui_SettingsWindow
-from PyQt6.QtWidgets import QWidget, QDialog
 from PyQt6.QtCore import QCoreApplication
 from .Languages import getLanguageNames
 from typing import TYPE_CHECKING
 from .Settings import Settings
+from PyQt6.QtGui import QIcon
 import sys
 import os
 
@@ -30,6 +31,10 @@ class SettingsWindow(QDialog, Ui_SettingsWindow):
                 foundTranslations = True
         if not foundTranslations:
              print("No compiled translations found. Please run tools/BuildTranslations to build the Translations.py.", file=sys.stderr)
+
+        self.resetButton.setIcon(QIcon(QApplication.style().standardIcon(QStyle.StandardPixmap.SP_DialogResetButton)))
+        self.okButton.setIcon(QIcon(QApplication.style().standardIcon(QStyle.StandardPixmap.SP_DialogOkButton)))
+        self.cancelButton.setIcon(QIcon(QApplication.style().standardIcon(QStyle.StandardPixmap.SP_DialogCancelButton)))
 
         self.resetButton.clicked.connect(lambda: self.applySettings(Settings()))
         self.cancelButton.clicked.connect(self.close)
