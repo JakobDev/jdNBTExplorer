@@ -88,6 +88,7 @@
   <url type="vcs-browser">https://codeberg.org/JakobDev/jdNBTExplorer</url>
   <categories>
     <category>Game</category>
+    <category>Utility</category>
     <category>Qt</category>
   </categories>
   <recommends>

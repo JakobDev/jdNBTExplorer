@@ -6,5 +6,5 @@ Comment=An Editor for Minecraft NBT files
 Icon=page.codeberg.JakobDev.jdNBTExplorer
 TryExec=jdNBTExplorer
 Exec=jdNBTExplorer %f
-Categories=Game;Qt;
+Categories=Game;Utility;Qt;
 SingleMainWindow=true
