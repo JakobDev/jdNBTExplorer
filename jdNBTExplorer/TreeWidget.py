@@ -1,13 +1,16 @@
-from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QInputDialog, QHeaderView, QMessageBox
+from PyQt6.QtWidgets import QTreeWidget, QInputDialog, QHeaderView, QMessageBox
 from PyQt6.QtCore import QCoreApplication
 from .Functions import stringToList
 from .EditWindow import EditWindow
 from PyQt6.QtGui import QCursor
 from .TagItem import TagItem
 import nbt.region
+import nbt.nbt
+import zlib
 import copy
 import nbt
 import os
+import io
 
 
 class TreeWidget(QTreeWidget):
@@ -58,20 +61,22 @@ class TreeWidget(QTreeWidget):
         rootItem.setFileType("nbt")
         self.addTopLevelItem(rootItem)
 
-    def openNBTFile(self, path: str) -> None:
-        try:
-            nbtfile = nbt.nbt.NBTFile(path,"rb")
-        except Exception:
-            QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Can't read file"), QCoreApplication.translate("TreeWidget", "Can't read {{path}}. Maybe it's not a NBT File.").replace("{{path}}", path))
-            return
-
+    def _parseNBTFile(self, nbtfile: nbt.nbt.NBTFile, path: str, file_type: str) -> None:
         rootItem = TagItem(0)
         rootItem.setText(0,os.path.basename(path))
         rootItem.setPath(path)
         rootItem.setTagType("root")
-        rootItem.setFileType("nbt")
+        rootItem.setFileType(file_type)
         self.parseCombound(rootItem,nbtfile)
         self.addTopLevelItem(rootItem)
+
+    def openNBTFile(self, path: str) -> None:
+        try:
+            nbtfile = nbt.nbt.NBTFile(path, "rb")
+            self._parseNBTFile(nbtfile, path, "nbt")
+        except Exception:
+            QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Can't read file"), QCoreApplication.translate("TreeWidget", "Can't read {{path}}. Maybe it's not a NBT File.").replace("{{path}}", path))
+            return
 
     def openRegionFile(self, path: str) -> None:
         region = nbt.region.RegionFile(path,"rb")
@@ -89,6 +94,18 @@ class TreeWidget(QTreeWidget):
             nbtdata = region.get_nbt(i["x"],i["z"])
             self.parseCombound(lengthItem,nbtdata)
         self.addTopLevelItem(rootItem)
+
+    def openMccFile(self, path: str) -> None:
+        try:
+            with open(path, "rb") as f:
+                by = f.read()
+
+            buf = io.BytesIO(zlib.decompress(by))
+            nbtfile = nbt.nbt.NBTFile(buffer=buf)
+            self._parseNBTFile(nbtfile, path, "mcc")
+        except Exception:
+            QMessageBox.critical(self, QCoreApplication.translate("TreeWidget", "Can't read file"), QCoreApplication.translate("TreeWidget", "Can't read {{path}}. Maybe it's not a NBT File.").replace("{{path}}", path))
+            return
 
     def parseData(self, name, value, parentItem, data):
         item = TagItem(parentItem)
@@ -157,6 +174,14 @@ class TreeWidget(QTreeWidget):
                     self.getSaveList(item.child(childPos), nbtFile.tags)
                     region.write_chunk(x, z, nbtFile)
                 region.close()
+            elif item.getFileType() == "mcc":
+                nbtfile = nbt.nbt.NBTFile()
+                self.getSaveList(item, nbtfile.tags)
+                buf = io.BytesIO()
+                nbtfile.write_file(buffer=buf)
+                buf.seek(0)
+                with open(item.getPath(), "wb") as f:
+                    f.write(zlib.compress(buf.read()))
             self.env.modified = False
 
     def getTag(self, child):

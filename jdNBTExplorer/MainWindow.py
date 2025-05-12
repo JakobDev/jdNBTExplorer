@@ -81,6 +81,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self._treeWidget.clearItems()
             self._treeWidget.openRegionFile(path)
             self.addPathToRecentFiles(path)
+        elif path.endswith(".mcc"):
+            if clear:
+                self._treeWidget.clearItems()
+            self._treeWidget.openMccFile(path)
+            self.addPathToRecentFiles(path)
         else:
             QMessageBox.critical(self, QCoreApplication.translate("MainWindow", "Not an NBT File"), QCoreApplication.translate("MainWindow", "This File does not look like an NBT File"))
 
@@ -161,7 +166,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.openDirectory(filepath, nbtFiles, regionFiles)
             elif filepath.endswith(".dat") and nbtFiles:
                 self.openFile(filepath, False)
-            elif filepath.endswith(".mca") and regionFiles:
+            elif (filepath.endswith(".mca") or filepath.endswith(".mcc")) and regionFiles:
                 self.openFile(filepath, False)
 
     def checkSave(self) -> bool:
