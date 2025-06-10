@@ -61,7 +61,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not self.checkSave():
             return
 
-        path = QFileDialog.getSaveFileName(self)
+        filter = QCoreApplication.translate("MainWindow", "NBT files") + " (*.dat *dat_old);;"
+        filter += QCoreApplication.translate("MainWindow", "All files") + " (*.*)"
+
+        path = QFileDialog.getSaveFileName(self, filter=filter)
         if path[0]:
             self._treeWidget.clearItems()
             self._treeWidget.newFile(path[0])
@@ -92,7 +95,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openClicked(self) -> None:
         if not self.checkSave():
             return
-        path = QFileDialog.getOpenFileName(self)
+
+        filter = QCoreApplication.translate("MainWindow", "NBT files") + " (*.dat *dat_old *mca *mcc);;"
+        filter += QCoreApplication.translate("MainWindow", "All files") + " (*.*)"
+
+        path = QFileDialog.getOpenFileName(self, filter=filter)
         if path[0]:
             self.openFile(path[0], True)
 
