@@ -11,6 +11,13 @@
   <project_license>GPL-3.0-only</project_license>
   <description>
     <p>jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used in Minecraft to store data related to your worlds. With jdNBTExplorer, you can view and edit these files directly.</p>
+    <p>jdNBTExplore supports the following file formats:</p>
+    <ul>
+      <li>.dat</li>
+      <li>.dat_old</li>
+      <li>.mca</li>
+      <li>.mcc</li>
+    </ul>
   </description>
   <screenshots>
     <screenshot type="default">
