@@ -3,10 +3,10 @@ from .OpenDirectoryTypeDialog import OpenDirectoryTypeDialog
 from .ui_compiled.MainWindow import Ui_MainWindow
 from PyQt6.QtCore import QCoreApplication, Qt
 from .SettingsWindow import SettingsWindow
+from PyQt6.QtGui import QAction, QIcon
 from .AboutWindow import AboutWindow
 from .TreeWidget import TreeWidget
 from typing import TYPE_CHECKING
-from PyQt6.QtGui import QAction
 import webbrowser
 import json
 import os
@@ -124,6 +124,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.recentFilesMenu.addSeparator()
         clearAction = QAction(QCoreApplication.translate("MainWindow", "Clear"), self)
+        clearAction.setIcon(QIcon.fromTheme(QIcon.ThemeIcon.EditClear))
         clearAction.triggered.connect(self.clearRecentFiles)
         self.recentFilesMenu.addAction(clearAction)
 
