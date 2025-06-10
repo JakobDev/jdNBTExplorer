@@ -1,7 +1,6 @@
 from PyQt6.QtCore import QTranslator, QLocale, QLibraryInfo
 from PyQt6.QtWidgets import QApplication
 from .Environment import Environment
-from .MainWindow import MainWindow
 import argparse
 import sys
 import os
@@ -11,6 +10,8 @@ def main() -> None:
     if not os.path.isdir(os.path.join(os.path.dirname(__file__), "ui_compiled")):
         print("Could not find compiled ui files. Please run tools/CompileUI.py first.", file=sys.stderr)
         sys.exit(1)
+
+    from .MainWindow import MainWindow
 
     app = QApplication(sys.argv)
     env = Environment()
