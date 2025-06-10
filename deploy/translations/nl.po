@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-26 16:46+0200\n"
+"POT-Creation-Date: 2025-06-10 17:15+0200\n"
 "PO-Revision-Date: 2023-06-05 07:44+0000\n"
 "Last-Translator: JakobDev <jakobdev@gmx.de>\n"
 "Language-Team: Dutch <https://translate.codeberg.org/projects/jdNBTExplorer/"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:6
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop:6
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop:5
 msgid "An Editor for Minecraft NBT files"
 msgstr "Een bewerker voor Minecrafts nbt-bestanden"
 
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:12
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:13
 msgid ""
 "jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used "
 "in Minecraft to store data related to your worlds. With jdNBTExplorer, you "
@@ -34,10 +34,30 @@ msgstr ""
 "van Minecraft waarin wereldgegevens worden opgeslagen. Met jdNBTExplorer kun "
 "je deze bestanden bekijken en bewerken."
 
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:14
+msgid "jdNBTExplore supports the following file formats:"
+msgstr ""
+
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:16
+msgid ".dat"
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:17
+msgid ".dat_old"
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:18
+msgid ".mca"
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:19
+msgid ".mcc"
+msgstr ""
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:24
 msgid "The main window"
 msgstr "Hoofdvenster"
 
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:20
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:28
 msgid "The window to edit a tag"
 msgstr "Label-bewerkvenster"

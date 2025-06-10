@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-26 16:46+0200\n"
-"PO-Revision-Date: 2023-05-26 16:46+0200\n"
+"POT-Creation-Date: 2025-06-10 17:15+0200\n"
+"PO-Revision-Date: 2025-06-10 17:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:6
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop:6
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop:5
 msgid "An Editor for Minecraft NBT files"
 msgstr "Ein Editor für Minecraft NBT Dateien"
 
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:12
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:13
 msgid ""
 "jdNBTExplorer allows you to edit NBT files. NBT is a custom file format used "
 "in Minecraft to store data related to your worlds. With jdNBTExplorer, you "
@@ -34,10 +34,30 @@ msgstr ""
 "Welten zu speichern. Mit jdNBTExplorer kannst du diese Dateien direkt "
 "anzeigen und bearbeiten."
 
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:14
+msgid "jdNBTExplore supports the following file formats:"
+msgstr "jdNBTExplore unterstützt die folgenden Dateiformate:"
+
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:16
+msgid ".dat"
+msgstr ".dat"
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:17
+msgid ".dat_old"
+msgstr ".dat_old"
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:18
+msgid ".mca"
+msgstr ".mca"
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:19
+msgid ".mcc"
+msgstr ".mcc"
+
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:24
 msgid "The main window"
 msgstr "Das Hauptfenster"
 
-#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:20
+#: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:28
 msgid "The window to edit a tag"
 msgstr "Das Fenster zum bearbeiten eines Tags"

@@ -113,57 +113,69 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../MainWindow.py" line="71"/>
+        <location filename="../MainWindow.py" line="99"/>
+        <location filename="../MainWindow.py" line="64"/>
+        <source>NBT files</source>
+        <translation>NBT Dateien</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.py" line="100"/>
+        <location filename="../MainWindow.py" line="65"/>
+        <source>All files</source>
+        <translation>Alle Dateien</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.py" line="74"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="71"/>
+        <location filename="../MainWindow.py" line="74"/>
         <source>{{path}} was not found</source>
         <translation>{{path}} wurde nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="85"/>
+        <location filename="../MainWindow.py" line="93"/>
         <source>Not an NBT File</source>
         <translation>Keine NBT Datei</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="85"/>
+        <location filename="../MainWindow.py" line="93"/>
         <source>This File does not look like an NBT File</source>
         <translation>Diese datei sieht nicht wie eine NBT Datei aus</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="110"/>
+        <location filename="../MainWindow.py" line="122"/>
         <source>No recent files</source>
         <translation>Keine zuletzt geöffneten Dateien</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="121"/>
+        <location filename="../MainWindow.py" line="133"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="174"/>
+        <location filename="../MainWindow.py" line="187"/>
         <source>File modified</source>
         <translation>Datei geändert</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="174"/>
+        <location filename="../MainWindow.py" line="187"/>
         <source>The File has been modified. Do you want to save your changes?</source>
         <translation>Die Datei wurde geändert. Möchstest du die Änderungen speichern?</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="189"/>
+        <location filename="../MainWindow.py" line="202"/>
         <source>Show this message on startup</source>
         <translation>Diese Nachricht beim Starten anzeigen</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="192"/>
+        <location filename="../MainWindow.py" line="205"/>
         <source>Warning</source>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../MainWindow.py" line="193"/>
+        <location filename="../MainWindow.py" line="206"/>
         <source>jdNBTExplorer is a programme that allows you to edit Minecraft&apos;s NBT files. Using it without proper knowledge can destroy your world. Therefore, please always make a backup of your world before using it.</source>
         <translation>jdNBTExplorer ist ein Programm, mit dem du die NBT Dateien von Minecraft bearbeiten kannst. Die unbedarfte Benutzung kann deine Welt zerstören. Bitte mache daher vor der Benutzung immer ein Backup deiner Welt.</translation>
     </message>
@@ -310,7 +322,7 @@
 <context>
     <name>SettingsWindow</name>
     <message>
-        <location filename="../SettingsWindow.py" line="24"/>
+        <location filename="../SettingsWindow.py" line="25"/>
         <source>System language</source>
         <translation>Systemsprache</translation>
     </message>
@@ -363,57 +375,59 @@
 <context>
     <name>TreeWidget</name>
     <message>
-        <location filename="../TreeWidget.py" line="24"/>
+        <location filename="../TreeWidget.py" line="27"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="24"/>
+        <location filename="../TreeWidget.py" line="27"/>
         <source>Value</source>
         <translation>Wert</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="24"/>
+        <location filename="../TreeWidget.py" line="27"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="65"/>
+        <location filename="../TreeWidget.py" line="107"/>
+        <location filename="../TreeWidget.py" line="78"/>
         <source>Can&apos;t read file</source>
         <translation>Konnte Datei nicht lesen</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="65"/>
+        <location filename="../TreeWidget.py" line="107"/>
+        <location filename="../TreeWidget.py" line="78"/>
         <source>Can&apos;t read {{path}}. Maybe it&apos;s not a NBT File.</source>
         <translation>Konnte {{path}} nicht lesen. Vielleicht ist es keine NBT Datei.</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="242"/>
+        <location filename="../TreeWidget.py" line="267"/>
         <source>New Compound</source>
         <translation>Neuer Datenverbund</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="242"/>
+        <location filename="../TreeWidget.py" line="267"/>
         <source>Please enter a name for the new compound</source>
         <translation>Bitte gib einen Namen für den neuen Datenverbund ein</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="257"/>
+        <location filename="../TreeWidget.py" line="282"/>
         <source>New List</source>
         <translation>Neue Liste</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="257"/>
+        <location filename="../TreeWidget.py" line="282"/>
         <source>Please enter a name for the new List</source>
         <translation>Bitte gib einen Namen für die neue Liste ein</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="272"/>
+        <location filename="../TreeWidget.py" line="297"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="../TreeWidget.py" line="272"/>
+        <location filename="../TreeWidget.py" line="297"/>
         <source>Please enter a new Name</source>
         <translation>Bitte gib einen neuen Namen ein</translation>
     </message>
