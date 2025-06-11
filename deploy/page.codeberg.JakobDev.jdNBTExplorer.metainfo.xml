@@ -30,6 +30,13 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="3.0" date="2025-06-11" type="stable">
+      <description>
+        <ul>
+          <li>Added support for .mcc files</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.3" date="2025-02-04" type="stable">
       <description>
         <ul>
