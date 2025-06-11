@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-10 17:15+0200\n"
-"PO-Revision-Date: 2023-06-05 07:44+0000\n"
-"Last-Translator: JakobDev <jakobdev@gmx.de>\n"
+"PO-Revision-Date: 2025-06-11 13:45+0000\n"
+"Last-Translator: Vistaus <vistaus@noreply.codeberg.org>\n"
 "Language-Team: Dutch <https://translate.codeberg.org/projects/jdNBTExplorer/"
 "UnixMetadata/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:6
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.desktop:5
@@ -36,23 +36,23 @@ msgstr ""
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:14
 msgid "jdNBTExplore supports the following file formats:"
-msgstr ""
+msgstr "jdNBTExplorer ondersteunt de volgende bestandsformaten:"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:16
 msgid ".dat"
-msgstr ""
+msgstr ".dat"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:17
 msgid ".dat_old"
-msgstr ""
+msgstr ".dat_old"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:18
 msgid ".mca"
-msgstr ""
+msgstr ".mca"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:19
 msgid ".mcc"
-msgstr ""
+msgstr ".mcc"
 
 #: deploy/page.codeberg.JakobDev.jdNBTExplorer.metainfo.xml:24
 msgid "The main window"
